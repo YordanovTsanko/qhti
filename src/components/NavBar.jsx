@@ -23,7 +23,7 @@ const NavBar = () => {
           <Link
             key={link.name}
             to={link.path}
-            className={`${link.bgColor + " " + link.hover} shadow-lg transition text-white text-md py-1 px-6 rounded-lg font-medium`}
+            className={`${link.bgColor + " " + link.hover} shadow-lg transition text-white text-lg py-1 px-7 rounded-lg font-medium`}
           >
             {link.name}
           </Link>
@@ -52,7 +52,7 @@ const NavBar = () => {
         </div>
         <Link
           to="/"
-          className="bg-primary text-white font-semibold py-2 px-2 rounded-3xl shadow hover:bg-primary/90 transition"
+          className="bg-primary tracking-widest text-white text-lg font-semibold py-2 px-3 rounded-3xl shadow hover:bg-primary/90 transition"
         >
           ДОБАВИ ОБЯВА
         </Link>

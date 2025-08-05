@@ -1,29 +1,12 @@
 import React from "react";
 import Container from "../components/Container";
-import lodkiIqhti from "../assets/lodki_i_qhti.png";
-import djetove from "../assets/djetove.png";
-import morskaElektronika from "../assets/morska_elektronika.png";
-import dvigateli from "../assets/dvigateli.png";
-import kolesari from "../assets/kolesari.png";
-import ribolov from "../assets/ribolov.png";
-import chasti from "../assets/chasti.png";
+import NewProducts from "../components/Home/NewProducts";
+import { temporaryProducts } from "../utils/tempoData";
+import { categories } from "../utils/categories";
+import adImg from "../assets/casino_landing_1500lv_756x479_2023.png";
 
 const Home = () => {
-  const categories = [
-    { src: lodkiIqhti, alt: "Лодки и яхти", label: "ЛОДКИ И ЯХТИ" },
-    { src: djetove, alt: "Джетове", label: "ДЖЕТОВЕ" },
-    {
-      src: morskaElektronika,
-      alt: "Морска електроника",
-      label: "МОРСКА ЕЛЕКТРОНИКА",
-    },
-    { src: dvigateli, alt: "Двигатели", label: "ДВИГАТЕЛИ" },
-    { src: kolesari, alt: "Колесари", label: "КОЛЕСАРИ" },
-    { src: ribolov, alt: "Риболов", label: "РИБОЛОВ" },
-    { src: chasti, alt: "Части", label: "ЧАСТИ" },
-  ];
-
-  const BOX_WIDTH = 225; // 7rem * 16px = 112px, same as your previous width
+  const BOX_WIDTH = 225; 
 
   const firstRow = categories.slice(0, 4);
   const secondRow = categories.slice(4);
@@ -37,7 +20,7 @@ const Home = () => {
         <div className="flex flex-col space-y-4 items-center">
           <div
             className="grid grid-cols-4 gap-4"
-            style={{ maxWidth: `${BOX_WIDTH * 4 + 3 * 16}px` }} // 4 boxes + 3 gaps (16px each)
+            style={{ maxWidth: `${BOX_WIDTH * 4 + 3 * 16}px` }}
           >
             {firstRow.map(({ src, alt, label }, i) => (
               <div
@@ -70,6 +53,28 @@ const Home = () => {
           </div>
         </div>
         <div className="mt-10 border-b-2 border-white h-px bg-white w-full"></div>
+        <div className="my-6 space-y-10">
+          <NewProducts
+            title="НАЙ-НОВО ОТ СОНАРИ"
+            products={temporaryProducts}
+          />
+          <NewProducts title="НАЙ-НОВО ОТ ЛОДКИ" products={temporaryProducts} />
+          <div>
+            <img
+              src={adImg}
+              alt={"Ad Error"}
+              className="h-44 w-full object-cover"
+            />
+          </div>
+          <NewProducts
+            title="НАЙ-НОВО ОТ ДВИГАТЕЛИ"
+            products={temporaryProducts}
+          />
+          <NewProducts
+            title="НАЙ-НОВО ОТ АКСЕСОАРИ"
+            products={temporaryProducts}
+          />
+        </div>
       </div>
     </Container>
   );
