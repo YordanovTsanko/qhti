@@ -6,7 +6,7 @@ import { categories } from "../utils/categories";
 import adImg from "../assets/casino_landing_1500lv_756x479_2023.png";
 
 const Home = () => {
-  const BOX_WIDTH = 225; 
+  const BOX_WIDTH = 225;
 
   const firstRow = categories.slice(0, 4);
   const secondRow = categories.slice(4);
@@ -25,11 +25,11 @@ const Home = () => {
             {firstRow.map(({ src, alt, label }, i) => (
               <div
                 key={i}
-                className="rounded-2xl bg-white p-4 flex flex-col cursor-pointer items-center"
+                className="rounded-2xl bg-white p-4 flex flex-col cursor-pointer items-center hover:bg-secondary group transition duration-300"
                 style={{ width: BOX_WIDTH }}
               >
                 <img src={src} alt={alt} className="h-20 w-auto" />
-                <h4 className="text-secondary text-center font-bold mt-2">
+                <h4 className="text-secondary group-hover:text-white text-center font-bold mt-2">
                   {label}
                 </h4>
               </div>
@@ -43,11 +43,13 @@ const Home = () => {
             {secondRow.map(({ src, alt, label }, i) => (
               <div
                 key={i}
-                className="rounded-2xl bg-white p-4 flex flex-col cursor-pointer items-center"
+                className="rounded-2xl bg-white p-4 flex flex-col cursor-pointer items-center hover:bg-secondary group transition duration-300"
                 style={{ width: BOX_WIDTH }}
               >
                 <img src={src} alt={alt} className="h-20 w-auto" />
-                <h4 className="text-secondary font-bold mt-2">{label}</h4>
+                <h4 className="text-secondary group-hover:text-white font-bold mt-2">
+                  {label}
+                </h4>
               </div>
             ))}
           </div>
