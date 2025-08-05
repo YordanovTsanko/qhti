@@ -1,15 +1,15 @@
-import React from "react";
 import Container from "../components/Container";
 import NewProducts from "../components/Home/NewProducts";
 import { temporaryProducts } from "../utils/tempoData";
-import { categories } from "../utils/categories";
 import adImg from "../assets/casino_landing_1500lv_756x479_2023.png";
+import Categories from "../components/Home/Categories";
+import { useSearchParams } from "react-router-dom";
+import SearchingForm from "../components/Home/SearchingForm";
 
 const Home = () => {
-  const BOX_WIDTH = 225;
-
-  const firstRow = categories.slice(0, 4);
-  const secondRow = categories.slice(4);
+  
+const [searchParams] = useSearchParams();
+const labelFromUrl = searchParams.get("filter");
 
   return (
     <Container>
@@ -17,43 +17,7 @@ const Home = () => {
         <h2 className="text-3xl font-bold text-white mb-10">
           БЪЛГАРСКИ МОРСКИ ПАЗАР
         </h2>
-        <div className="flex flex-col space-y-4 items-center">
-          <div
-            className="grid grid-cols-4 gap-4"
-            style={{ maxWidth: `${BOX_WIDTH * 4 + 3 * 16}px` }}
-          >
-            {firstRow.map(({ src, alt, label }, i) => (
-              <div
-                key={i}
-                className="rounded-2xl bg-white p-4 flex flex-col cursor-pointer items-center hover:bg-secondary group transition duration-300"
-                style={{ width: BOX_WIDTH }}
-              >
-                <img src={src} alt={alt} className="h-20 w-auto" />
-                <h4 className="text-secondary group-hover:text-white text-center font-bold mt-2">
-                  {label}
-                </h4>
-              </div>
-            ))}
-          </div>
-
-          <div
-            className="flex justify-center gap-4"
-            style={{ maxWidth: `${BOX_WIDTH * 4 + 3 * 16}px`, width: "100%" }}
-          >
-            {secondRow.map(({ src, alt, label }, i) => (
-              <div
-                key={i}
-                className="rounded-2xl bg-white p-4 flex flex-col cursor-pointer items-center hover:bg-secondary group transition duration-300"
-                style={{ width: BOX_WIDTH }}
-              >
-                <img src={src} alt={alt} className="h-20 w-auto" />
-                <h4 className="text-secondary group-hover:text-white font-bold mt-2">
-                  {label}
-                </h4>
-              </div>
-            ))}
-          </div>
-        </div>
+        {labelFromUrl ? <SearchingForm /> : <Categories />}
         <div className="mt-10 border-b-2 border-white h-px bg-white w-full"></div>
         <div className="my-6 space-y-10">
           <NewProducts

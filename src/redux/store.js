@@ -13,7 +13,7 @@ const rootReducer = (state, action) => {
 
 const store = configureStore({
   reducer: rootReducer,
-  devTools: process.env.NODE_ENV !== "production", // enable Redux DevTools in development
+  devTools: process.env.NODE !== "production", // enable Redux DevTools in development
 });
 
 export default store;
