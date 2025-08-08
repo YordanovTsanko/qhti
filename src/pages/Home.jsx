@@ -4,12 +4,15 @@ import { temporaryProducts } from "../utils/tempoData";
 import adImg from "../assets/casino_landing_1500lv_756x479_2023.png";
 import Categories from "../components/Home/Categories";
 import { useSearchParams } from "react-router-dom";
-import SearchingForm from "../components/Home/SearchingForm";
+import SearchForm from "../components/Home/SearchForm";
 
 const Home = () => {
-  
-const [searchParams] = useSearchParams();
-const labelFromUrl = searchParams.get("filter");
+  const [searchParams] = useSearchParams();
+  const labelFromUrl = searchParams.get("filter");
+
+  const handeSumbitSearch = (values) => {
+    console.log(values);
+  };
 
   return (
     <Container>
@@ -17,7 +20,7 @@ const labelFromUrl = searchParams.get("filter");
         <h2 className="text-3xl font-bold text-white mb-10">
           БЪЛГАРСКИ МОРСКИ ПАЗАР
         </h2>
-        {labelFromUrl ? <SearchingForm /> : <Categories />}
+        {labelFromUrl ? <SearchForm onSubmit={handeSumbitSearch}/> : <Categories />}
         <div className="mt-10 border-b-2 border-white h-px bg-white w-full"></div>
         <div className="my-6 space-y-10">
           <NewProducts
