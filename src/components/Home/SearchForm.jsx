@@ -1,11 +1,11 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { ReactComponent as ArrowIcon } from "../../assets/arrow-down-svgrepo-com.svg";
 import { ReactComponent as SearchIcon } from "../../assets/search.svg";
 import { ReactComponent as HistoryIcon } from "../../assets/history.svg";
 import { useLocation, useNavigate } from "react-router-dom";
-import { categories } from "../../utils/categories";
+import { categories, optionsLabelTranslation } from "../../utils/categories";
 import { tempoDataForSearch } from "../../utils/tempoData";
 
 const validationSchema = Yup.object({
@@ -20,24 +20,22 @@ const SearchForm = ({ onSubmit }) => {
     () => new URLSearchParams(location.search),
     [location.search]
   );
-  const filterParam =
-    searchParams.get("filter")?.toLowerCase() || categories[0].eu;
+  const filterParam = searchParams.get("filter");
 
-  const hideSectionsCategories = ["morska_elektronika", "ribolov", "chasti"];
-  const showSections = !hideSectionsCategories.includes(filterParam);
-
-  const [category, setCategory] = React.useState(filterParam);
+  const [category, setCategory] = useState(filterParam || categories[0]?.eu);
 
   useEffect(() => {
     if (category !== filterParam) {
       const newSearchParams = new URLSearchParams(location.search);
       newSearchParams.set("filter", category);
-      navigate({ search: newSearchParams.toString() }, { replace: true });
+      navigate(`${location.pathname}?${newSearchParams.toString()}`, {
+        replace: true,
+      });
     }
-  }, [category, navigate, filterParam, location.search]);
+  }, [category, navigate, filterParam, location.pathname, location.search]);
 
   useEffect(() => {
-    setCategory(filterParam);
+    setCategory(filterParam || categories[0]?.eu);
   }, [filterParam]);
 
   return (
@@ -50,6 +48,11 @@ const SearchForm = ({ onSubmit }) => {
         year: "",
         maxPrice: "",
         maxHp: "",
+        maxLength: "",
+        workingHours: "",
+        os: "",
+        typeFish: "",
+        technic: "",
         location1: "",
         location2: "",
         sortBy: "",
@@ -65,18 +68,6 @@ const SearchForm = ({ onSubmit }) => {
     >
       {({ values, setFieldValue, handleChange }) => {
         const data = tempoDataForSearch[values.category] || {};
-        const brandOptions = data.brandOptions || [];
-        const modelOptions = data.modelOptions || [];
-        const yearOptions = data.yearOptions || [];
-        const maxPriceDefault = data.maxPrice ? data.maxPrice.toString() : "";
-        const maxHpDefault = data.maxHp ? data.maxHp.toString() : "";
-
-        if (values.maxPrice === "" && maxPriceDefault !== "") {
-          setFieldValue("maxPrice", maxPriceDefault);
-        }
-        if (values.maxHp === "" && maxHpDefault !== "") {
-          setFieldValue("maxHp", maxHpDefault);
-        }
 
         const selectedCategoryImage = categories.find(
           (cat) => cat.eu === values.category
@@ -86,6 +77,9 @@ const SearchForm = ({ onSubmit }) => {
           handleChange(e);
           setCategory(e.target.value);
         };
+
+        const toFieldName = (optKey) =>
+          optKey.endsWith("Options") ? optKey.replace(/Options$/, "") : optKey;
 
         return (
           <Form className="w-full max-w-5xl bg-white p-4 rounded-lg shadow">
@@ -131,152 +125,106 @@ const SearchForm = ({ onSubmit }) => {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
-              <div className="flex flex-col gap-1">
-                <label className="font-bold">ВИД</label>
-                <Field
-                  as="select"
-                  name="type"
-                  className="border border-black text-sm rounded-lg px-2 py-[2px]"
-                >
-                  <option value="vsichki">ВСИЧКИ</option>
-                </Field>
+            <div className="flex gap-4 items-start w-full flex-shrink-0">
+              <div className="grid grid-cols-2 gap-4 flex-1">
+                {Object.entries(data).map(([key, val]) => {
+                  
+                  const fieldName = toFieldName(key);
+                  
+                  const label =
+                    optionsLabelTranslation[key] ||
+                    optionsLabelTranslation[fieldName] ||
+                    key;
+
+                  return (
+                    <div key={key} className="flex flex-col gap-1">
+                      <label className="font-bold">{label}</label>
+                      {Array.isArray(val) ? (
+                        <Field
+                          as="select"
+                          name={fieldName}
+                          className="border border-black text-sm rounded-lg px-2 py-[2px]"
+                        >
+                          <option value="">ВСИЧКИ</option>
+                          {val.map((opt) => (
+                            <option key={opt.value} value={opt.value}>
+                              {opt.label}
+                            </option>
+                          ))}
+                        </Field>
+                      ) : (
+                        <Field
+                          type="number"
+                          name={fieldName}
+                          className="border border-black text-sm rounded-lg px-2 py-[2px]"
+                          placeholder=""
+                        />
+                      )}
+                    </div>
+                  );
+                })}
               </div>
 
-              <div className="flex flex-col gap-1">
-                <label className="font-bold">МАРКА</label>
-                <Field
-                  as="select"
-                  name="brand"
-                  className="border border-black text-sm rounded-lg px-2 py-[2px]"
-                >
-                  <option value="">ВСИЧКИ</option>
-                  {brandOptions.map((brand) => (
-                    <option key={brand} value={brand}>
-                      {brand}
-                    </option>
-                  ))}
-                </Field>
-              </div>
-
-              <div className="flex flex-col gap-1">
-                <label className="font-bold">НАМИРА СЕ В:</label>
-                <Field
-                  as="select"
-                  name="location1"
-                  className="border border-black text-sm rounded-lg px-2 py-[2px]"
-                >
-                  <option value="vsichki">ВСИЧКИ</option>
-                </Field>
-              </div>
-              <div className="flex flex-col justify-end gap-1">
-                <Field
-                  as="select"
-                  name="location2"
-                  className="border border-black text-sm rounded-lg px-2 py-[2px]"
-                >
-                  <option value="vsichki">ВСИЧКИ</option>
-                </Field>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
-              <div className="flex flex-col gap-1">
-                <label className="font-bold">МОДЕЛ</label>
-                <Field
-                  as="select"
-                  name="model"
-                  className="border border-black text-sm rounded-lg px-2 py-[2px]"
-                >
-                  <option value="">ВСИЧКИ</option>
-                  {modelOptions.map((model) => (
-                    <option key={model} value={model}>
-                      {model}
-                    </option>
-                  ))}
-                </Field>
-              </div>
-
-              <div className="flex flex-col gap-1">
-                <label className="font-bold">ГОДИНА</label>
-                <Field
-                  as="select"
-                  name="year"
-                  className="border border-black text-sm rounded-lg px-2 py-[2px]"
-                >
-                  <option value="">ВСИЧКИ</option>
-                  {yearOptions.map((year) => (
-                    <option key={year} value={year}>
-                      {year}
-                    </option>
-                  ))}
-                </Field>
-              </div>
-
-              <div className="flex flex-col gap-1 col-span-2">
-                <label className="font-bold">ПОДРЕДИ РЕЗУЛТАТИТЕ ПО:</label>
-                <Field
-                  as="select"
-                  name="sortBy"
-                  className="border border-black text-sm rounded-lg px-2 py-[2px]"
-                >
-                  <option value="vsichki">ВИД / МАРКА / ЦЕНА</option>
-                </Field>
-              </div>
-            </div>
-
-            <div
-              className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4"
-            >
-              <div className="flex flex-col gap-1">
-                <label className="font-bold">МАКСИМАЛНА ЦЕНА (лв):</label>
-                <Field
-                  type="number"
-                  name="maxPrice"
-                  placeholder={maxPriceDefault}
-                  className="border border-black text-sm rounded-lg px-2 py-[2px]"
-                />
-              </div>
-              {showSections && (
+              <div className="grid grid-cols-2 gap-4 flex-1">
                 <div className="flex flex-col gap-1">
-                  <label className="font-bold">
-                    МАКСИМАЛНИ КОНСКИ СИЛИ (м):
-                  </label>
+                  <label className="font-bold">НАМИРА СЕ В:</label>
                   <Field
-                    type="number"
-                    name="maxHp"
-                    placeholder={maxHpDefault}
+                    as="select"
+                    name="location1"
                     className="border border-black text-sm rounded-lg px-2 py-[2px]"
-                  />
+                  >
+                    <option value="vsichki">ВСИЧКИ</option>
+                  </Field>
                 </div>
-              )}
 
-              <div className="flex flex-col gap-4 col-span-2  col-start-3">
-                <button
-                  type="submit"
-                  className="bg-primary justify-center flex items-center gap-1 font-semibold text-3xl text-white px-6 py-2 rounded-3xl"
-                >
-                  <SearchIcon className="h-8 w-8" />
-                  ТЪРСИ
-                </button>
-                <div className="flex gap-4 items-center font-semibold self-end">
-                  <button
-                    type="reset"
-                    className="text-secondary hover:text-orange-600 underline transition duration-300"
+                <div className="flex flex-col justify-end gap-1">
+                  <Field
+                    as="select"
+                    name="location2"
+                    className="border border-black text-sm rounded-lg px-2 py-[2px]"
                   >
-                    ИЗЧИСТИ ФИЛТРИ
-                  </button>
-                  <button
-                    type="button"
-                    className="text-secondary hover:text-orange-600 underline transition duration-300"
+                    <option value="vsichki">ВСИЧКИ</option>
+                  </Field>
+                </div>
+
+                <div className="flex flex-col gap-1 col-span-2">
+                  <label className="font-bold">ПОДРЕДИ РЕЗУЛТАТИТЕ ПО:</label>
+                  <Field
+                    as="select"
+                    name="sortBy"
+                    className="border border-black text-sm rounded-lg px-2 py-[2px]"
                   >
-                    ПОДРОБНО ТЪРСЕНЕ
+                    <option value="vsichki">ВИД / МАРКА / ЦЕНА</option>
+                  </Field>
+                </div>
+
+                <div className="flex flex-col gap-4 col-span-2">
+                  <button
+                    type="submit"
+                    className="bg-primary justify-center flex items-center gap-1 font-semibold text-3xl text-white px-6 py-2 rounded-3xl"
+                  >
+                    <SearchIcon className="h-8 w-8" />
+                    ТЪРСИ
                   </button>
+                  <div className="flex gap-4 items-center font-semibold self-end">
+                    <button
+                      type="reset"
+                      className="text-secondary hover:text-orange-600 underline transition duration-300"
+                    >
+                      ИЗЧИСТИ ФИЛТРИ
+                    </button>
+                    <button
+                      type="button"
+                      className="text-secondary hover:text-orange-600 underline transition duration-300"
+                    >
+                      ПОДРОБНО ТЪРСЕНЕ
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="flex gap-4 -mt-10 mb-4 text-xs font-light">
+            <div className="flex gap-4 -mt-[18px] mb-2 text-xs font-light">
               <label className="flex items-center gap-1">
                 <Field type="checkbox" name="isUsed" /> УПОТРЕБЯВАНИ
               </label>

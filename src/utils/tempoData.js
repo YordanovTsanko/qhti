@@ -1,4 +1,4 @@
-
+import { type } from "@testing-library/user-event/dist/cjs/utility/type.js";
 import productone from "../assets/product-1.png";
 import producttwo from "../assets/product-2.png";
 import productthree from "../assets/product-3.png";
@@ -45,49 +45,158 @@ export const temporaryProducts = [
     date: "Обновено 21.09.2024",
   },
 ];
-
-
-
 export const tempoDataForSearch = {
   lodki_i_qhti: {
-    brandOptions: ["Bayliner", "Yamaha", "Sea Ray"],
-    modelOptions: ["175 Bowrider", "242 Limited S", "SPX 190"],
-    yearOptions: ["2020", "2019", "2018"],
-    maxPrice: 150000,
-    maxHp: 300,
+    typeOptions: [
+      { value: "Boat", label: "Лодка" },
+      { value: "Yacht", label: "Яхта" },
+    ],
+    brandOptions: [
+      { value: "Bayliner", label: "Бейлайнер" },
+      { value: "Yamaha", label: "Ямаха" },
+      { value: "Sea Ray", label: "Сий Рей" },
+    ],
+    modelOptions: [
+      { value: "175 Bowrider", label: "175 Боурайдер" },
+      { value: "242 Limited S", label: "242 Лимитед S" },
+      { value: "SPX 190", label: "SPX 190" },
+    ],
+    yearOptions: [
+      { value: "2020", label: "2020" },
+      { value: "2019", label: "2019" },
+      { value: "2018", label: "2018" },
+    ],
+    maxPrice: 0,
+    maxLength: 0,
   },
+
   djetove: {
-    brandOptions: ["Sea-Doo", "Kawasaki", "Yamaha"],
-    modelOptions: ["Spark", "Ultra 310", "VX Cruiser"],
-    yearOptions: ["2023", "2022", "2021"],
-    maxPrice: 80000,
-    maxHp: 310,
+    brandOptions: [
+      { value: "Sea-Doo", label: "Сий-Ду" },
+      { value: "Kawasaki", label: "Кавазаки" },
+      { value: "Yamaha", label: "Ямаха" },
+    ],
+    modelOptions: [
+      { value: "Spark", label: "Спарк" },
+      { value: "Ultra 310", label: "Ултра 310" },
+      { value: "VX Cruiser", label: "VX Круизър" },
+    ],
+    yearOptions: [
+      { value: "2023", label: "2023" },
+      { value: "2022", label: "2022" },
+      { value: "2021", label: "2021" },
+    ],
+    workingHoursOptions: [
+      { value: "0", label: "0" },
+      { value: "1", label: "1" },
+      { value: "2", label: "2" },
+      { value: "3", label: "3" },
+      { value: "4", label: "4" },
+      { value: "5", label: "5" },
+      { value: "6", label: "6" },
+    ],
+    maxPrice: 0,
+    maxHp: 0,
   },
+
   morska_elektronika: {
-    brandOptions: ["Garmin", "Raymarine", "Humminbird"],
-    modelOptions: ["EchoMap", "Axiom", "Helix"],
-    yearOptions: ["2023", "2022", "2020"],
+    typeOptions: [
+      { value: "GPS", label: "GPS" },
+      { value: "NMEA", label: "NMEA" },
+    ],
+    brandOptions: [
+      { value: "Garmin", label: "Гармин" },
+      { value: "Raymarine", label: "Реймарин" },
+      { value: "Humminbird", label: "Хъмминбърд" },
+    ],
+    modelOptions: [
+      { value: "EchoMap", label: "ЕкоМап" },
+      { value: "Axiom", label: "Аксом" },
+      { value: "Helix", label: "Хеликс" },
+    ],
+    maxPrice: 0,
   },
+
   dvigateli: {
-    brandOptions: ["Mercury", "Suzuki", "Honda"],
-    modelOptions: ["Verado", "DF", "BF"],
-    yearOptions: ["2021", "2020", "2019"],
-    maxPrice: 60000,
-    maxHp: 350,
+    typeOptions: [
+      { value: "Engine", label: "Двигател" },
+      { value: "Motor", label: "Мотор" },
+    ],
+    brandOptions: [
+      { value: "Mercury", label: "Мъркюри" },
+      { value: "Suzuki", label: "Сузуки" },
+      { value: "Honda", label: "Хонда" },
+    ],
+    modelOptions: [
+      { value: "Verado", label: "Верадо" },
+      { value: "DF", label: "DF" },
+      { value: "BF", label: "BF" },
+    ],
+    yearOptions: [
+      { value: "2021", label: "2021" },
+      { value: "2020", label: "2020" },
+      { value: "2019", label: "2019" },
+    ],
+    maxPrice: 0,
+    maxHp: 0,
   },
+
   kolesari: {
-    brandOptions: ["Honda", "Kawasaki", "Yamaha"],
-    modelOptions: ["CRF", "Ninja", "YZF"],
-    yearOptions: ["2022", "2021", "2020"],
+    typeOptions: [
+      { value: "Trailer", label: "Ремарке" },
+      { value: "Other", label: "Друго" },
+    ],
+    brandOptions: [
+      { value: "Honda", label: "Хонда" },
+      { value: "Kawasaki", label: "Кавазаки" },
+      { value: "Yamaha", label: "Ямаха" },
+    ],
+    osOptions: [
+      { value: "2-axle", label: "Двуосно" },
+      { value: "4-axle", label: "Четириосно" },
+    ],
+    yearOptions: [
+      { value: "2022", label: "2022" },
+      { value: "2021", label: "2021" },
+      { value: "2020", label: "2020" },
+    ],
+    maxPrice: 0,
+    maxLength: 0,
   },
+
   ribolov: {
-    brandOptions: ["Shimano", "Daiwa", "Rapala"],
-    modelOptions: ["Stradic", "Tatula", "X-Rap"],
-    yearOptions: ["2022", "2021", "2020"],
+    typeOptions: [
+      { value: "river", label: "Река" },
+      { value: "lake", label: "Езеро" },
+    ],
+    brandOptions: [
+      { value: "Shimano", label: "Шимано" },
+      { value: "Daiwa", label: "Дайва" },
+      { value: "Rapala", label: "Рапала" },
+    ],
+    typeFishOptions: [
+      { value: "mackerel", label: "Скумрия" },
+      { value: "tuna", label: "Риба тон" },
+      { value: "salmon", label: "Сьомга" },
+    ],
+    technicOptions: [
+      { value: "spinning", label: "Спининг" },
+      { value: "feeder", label: "Фидер" },
+      { value: "bait", label: "Стръв" },
+    ],
+    maxPrice: 0,
   },
+
   chasti: {
-    brandOptions: ["OEM", "Aftermarket"],
-    modelOptions: ["Engine Part", "Hull Part", "Electrical"],
-    yearOptions: ["2023", "2022", "2021"],
+    typeOptions: [
+      { value: "Engine", label: "Двигател" },
+      { value: "Hull", label: "Корпус" },
+      { value: "Electrical", label: "Електрическа система" },
+    ],
+    brandOptions: [
+      { value: "OEM", label: "ОЕМ" },
+      { value: "Aftermarket", label: "Афтърмаркет" },
+    ],
+    maxPrice: 0,
   },
 };

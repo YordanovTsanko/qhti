@@ -25,3 +25,17 @@ export const categories = [
   { src: ribolov, alt: "Риболов", label: "РИБОЛОВ", eu: "ribolov" },
   { src: chasti, alt: "Части", label: "ЧАСТИ", eu: "chasti" },
 ];
+
+export const optionsLabelTranslation = {
+  typeOptions: "ВИД",
+  brandOptions: "МАРКА",
+  modelOptions: "МОДЕЛ",
+  yearOptions: "ГОДИНА",
+  maxPrice: "МАКСИМАЛНА ЦЕНА (лв)",
+  maxLength: "МАКСИМАЛНА ДЪЛЖИНА (м)",
+  workingHoursOptions: "МАКС РАБОТНИ ЧАСОВЕ",
+  osOptions: "ОСИ",
+  typeFishOptions: "ЗА ВИД РИБА",
+  technicOptions: "ТЕХНИКА НА РИБОЛОВ",
+  maxHp: "МАКСИМАЛНИ КОНСКИ СИЛА",
+};
