@@ -2,6 +2,8 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
+import facebook from "../../assets/facebook-png.png";
+import google from "../../assets/google-png.png";
 
 const LoginForm = () => {
   const initialValues = {
@@ -91,8 +93,14 @@ const LoginForm = () => {
       </Formik>
       <div className="max-w-[20vw] flex flex-col gap-4 items-center mx-4">
         <h2 className="text-xl">ИЛИ</h2>
-        <button className="rounded-2xl bg-primary text-white w-full py-[6px] text-md font-sans">ВХОД С FACEBOOK</button>
-        <button className="rounded-2xl bg-gray-200 w-full py-[6px] text-md font-sans">ВХОД С GOOGLE</button>
+        <button className="rounded-2xl bg-[#45619d] text-white w-full py-[6px] text-md flex items-center justify-center transition duration-300 hover:bg-primary/90 font-sans">
+          <img src={facebook} alt="Facebook" className="w-6 h-6 inline mr-2" />
+          ВХОД С FACEBOOK
+        </button>
+        <button className="rounded-2xl bg-gray-200 w-full py-[6px] text-md flex items-center justify-center transition duration-300 hover:bg-gray-300 font-sans">
+          <img src={google} alt="Google" className="w-6 h-6 inline mr-2" />
+          ВХОД С GOOGLE
+        </button>
       </div>
     </div>
   );
