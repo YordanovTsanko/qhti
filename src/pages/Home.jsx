@@ -16,13 +16,13 @@ const Home = () => {
 
   return (
     <Container>
-      <div className="flex flex-col items-center p-4">
+      <div className="flex flex-col items-center py-4 ">
         <h2 className="text-3xl font-bold text-white mb-10">
           БЪЛГАРСКИ МОРСКИ ПАЗАР
         </h2>
         {labelFromUrl ? <SearchForm onSubmit={handeSumbitSearch}/> : <Categories />}
-        <div className="mt-10 border-b-2 border-white h-px bg-white w-full"></div>
-        <div className="my-6 space-y-10">
+        <div className="mt-6 mb-8 border-b-2 border-white h-px bg-white w-full"></div>
+        <div className="space-y-10 w-full px-3 lg:px-0">
           <NewProducts
             title="НАЙ-НОВО ОТ СОНАРИ"
             products={temporaryProducts}

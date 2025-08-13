@@ -4,49 +4,33 @@ import { categories } from "../../utils/categories";
 
 const Categories = () => {
   const navigate = useNavigate();
-  const BOX_WIDTH = 225;
-
-  const firstRow = categories.slice(0, 4);
-  const secondRow = categories.slice(4);
 
   const handleSelection = (endpoint) => {
     navigate(`?filter=${encodeURIComponent(endpoint)}`);
   };
 
   return (
-    <div className="flex flex-col space-y-4 items-center">
-      <div
-        className="grid grid-cols-4 gap-4"
-        style={{ maxWidth: `${BOX_WIDTH * 4 + 3 * 16}px` }}
-      >
-        {firstRow.map(({ src, alt, label, eu }, i) => (
+    <div className="w-full max-w-6xl mx-auto px-4 py-6">
+      <div className="flex flex-wrap justify-center gap-4">
+        {categories.map(({ src, alt, label, eu }, i) => (
           <div
             key={i}
-            className="rounded-2xl bg-white p-4 flex flex-col cursor-pointer items-center hover:bg-secondary group transition duration-300"
-            style={{ width: BOX_WIDTH }}
+            role="button"
+            tabIndex={0}
             onClick={() => handleSelection(eu)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                handleSelection(eu);
+              }
+            }}
+            className="flex-shrink-0 w-48 sm:w-52 md:w-56 lg:w-60 flex flex-col items-center justify-center gap-3 bg-white rounded-2xl p-4 cursor-pointer hover:bg-secondary group transition-shadow duration-200 shadow-sm"
+            aria-label={`Категория ${label}`}
           >
-            <img src={src} alt={alt} className="h-20 w-auto" />
-            <h4 className="text-secondary group-hover:text-white text-center font-bold mt-2">
-              {label}
-            </h4>
-          </div>
-        ))}
-      </div>
-
-      <div
-        className="flex justify-center gap-4"
-        style={{ maxWidth: `${BOX_WIDTH * 4 + 3 * 16}px`, width: "100%" }}
-      >
-        {secondRow.map(({ src, alt, label, eu }, i) => (
-          <div
-            key={i}
-            className="rounded-2xl bg-white p-4 flex flex-col cursor-pointer items-center hover:bg-secondary group transition duration-300"
-            style={{ width: BOX_WIDTH }}
-            onClick={() => handleSelection(eu)}
-          >
-            <img src={src} alt={alt} className="h-20 w-auto" />
-            <h4 className="text-secondary group-hover:text-white font-bold mt-2">
+            <div className="flex items-center justify-center h-20 md:h-24 w-full">
+              <img src={src} alt={alt} className="h-16 md:h-20 w-auto object-contain mx-auto" />
+            </div>
+            <h4 className="text-center text-secondary group-hover:text-white font-bold text-sm md:text-base">
               {label}
             </h4>
           </div>

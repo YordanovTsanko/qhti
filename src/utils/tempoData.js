@@ -1,4 +1,3 @@
-import { type } from "@testing-library/user-event/dist/cjs/utility/type.js";
 import productone from "../assets/product-1.png";
 import producttwo from "../assets/product-2.png";
 import productthree from "../assets/product-3.png";
