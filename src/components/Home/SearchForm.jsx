@@ -56,14 +56,18 @@ const SearchForm = ({ onSubmit }) => {
         location1: "",
         location2: "",
         sortBy: "",
-        isUsed: false,
-        isNew: true,
-        forParts: false,
+        condition: "new",
       }}
       validationSchema={validationSchema}
       enableReinitialize={true}
       onSubmit={(values) => {
-        onSubmit(values);
+        const submitValues = {
+          ...values,
+          isUsed: values.condition === "used",
+          isNew: values.condition === "new",
+          forParts: values.condition === "parts",
+        };
+        onSubmit(submitValues);
       }}
     >
       {({ values, setFieldValue, handleChange }) => {
@@ -83,8 +87,8 @@ const SearchForm = ({ onSubmit }) => {
 
         return (
           <Form className="w-full max-w-5xl bg-white p-4 rounded-lg shadow">
-            <div className="flex justify-between items-center">
-              <div className="flex items-center gap-4">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
+              <div className="flex items-center gap-4 order-2 md:order-1">
                 <div className="flex flex-col relative items-start gap-2 mb-4">
                   <label className="font-bold">ТЪРСЕНЕ В КАТЕГОРИЯ</label>
                   <div className="relative w-[260px]">
@@ -117,20 +121,18 @@ const SearchForm = ({ onSubmit }) => {
                   className="w-auto h-14"
                 />
               </div>
-              <div className="flex gap-1 items-center group cursor-pointer">
+              <div className="flex gap-1 items-center group cursor-pointer self-end md:self-auto">
                 <HistoryIcon className="w-8 h-8 hover:text-orange-600" />
-                <h3 className="text-secondary font-bold text-lg group-hover:text-orange-600">
+                <h3 className="text-secondary font-bold text-sm xl:text-lg group-hover:text-orange-600">
                   ВАШИТЕ ПОСЛЕДНИ ТЪРСЕНИЯ
                 </h3>
               </div>
             </div>
 
-            <div className="flex gap-4 items-start w-full flex-shrink-0">
-              <div className="grid grid-cols-2 gap-4 flex-1">
+            <div className="flex flex-col md:flex-row gap-4 items-center md:items-start w-full flex-shrink-0">
+              <div className="grid grid-cols-2 gap-4 flex-1 w-full md:w-auto">
                 {Object.entries(data).map(([key, val]) => {
-                  
                   const fieldName = toFieldName(key);
-                  
                   const label =
                     optionsLabelTranslation[key] ||
                     optionsLabelTranslation[fieldName] ||
@@ -138,7 +140,7 @@ const SearchForm = ({ onSubmit }) => {
 
                   return (
                     <div key={key} className="flex flex-col gap-1">
-                      <label className="font-bold">{label}</label>
+                      <label className="font-bold text-sm md:text-md">{label}</label>
                       {Array.isArray(val) ? (
                         <Field
                           as="select"
@@ -165,9 +167,9 @@ const SearchForm = ({ onSubmit }) => {
                 })}
               </div>
 
-              <div className="grid grid-cols-2 gap-4 flex-1">
+              <div className="grid grid-cols-2 gap-4 flex-1 w-full md:w-auto">
                 <div className="flex flex-col gap-1">
-                  <label className="font-bold">НАМИРА СЕ В:</label>
+                  <label className="font-bold text-sm md:text-md">НАМИРА СЕ В:</label>
                   <Field
                     as="select"
                     name="location1"
@@ -188,7 +190,7 @@ const SearchForm = ({ onSubmit }) => {
                 </div>
 
                 <div className="flex flex-col gap-1 col-span-2">
-                  <label className="font-bold">ПОДРЕДИ РЕЗУЛТАТИТЕ ПО:</label>
+                  <label className="font-bold text-sm md:text-md">ПОДРЕДИ РЕЗУЛТАТИТЕ ПО:</label>
                   <Field
                     as="select"
                     name="sortBy"
@@ -224,15 +226,36 @@ const SearchForm = ({ onSubmit }) => {
               </div>
             </div>
 
-            <div className="flex gap-4 -mt-[18px] mb-2 text-xs font-light">
+            <div className="flex gap-4 mt-2 xl:-mt-[18px] mb-2 text-xs font-light">
               <label className="flex items-center gap-1">
-                <Field type="checkbox" name="isUsed" /> УПОТРЕБЯВАНИ
+                <Field
+                  type="radio"
+                  name="condition"
+                  value="used"
+                  checked={values.condition === "used"}
+                  onChange={() => setFieldValue("condition", "used")}
+                />
+                УПОТРЕБЯВАНИ
               </label>
               <label className="flex items-center gap-1">
-                <Field type="checkbox" name="isNew" /> НОВИ
+                <Field
+                  type="radio"
+                  name="condition"
+                  value="new"
+                  checked={values.condition === "new"}
+                  onChange={() => setFieldValue("condition", "new")}
+                />
+                НОВИ
               </label>
               <label className="flex items-center gap-1">
-                <Field type="checkbox" name="forParts" /> НА ЧАСТИ
+                <Field
+                  type="radio"
+                  name="condition"
+                  value="parts"
+                  checked={values.condition === "parts"}
+                  onChange={() => setFieldValue("condition", "parts")}
+                />
+                НА ЧАСТИ
               </label>
             </div>
           </Form>

@@ -16,7 +16,7 @@ const Home = () => {
 
   return (
     <Container>
-      <div className="flex flex-col items-center py-4 ">
+      <div className="flex flex-col items-center py-4 px-2 md:px-0">
         <h2 className="text-3xl font-bold text-white mb-10">
           БЪЛГАРСКИ МОРСКИ ПАЗАР
         </h2>
