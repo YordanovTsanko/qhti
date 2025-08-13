@@ -2,12 +2,13 @@ import React from "react";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { IoMdClose } from "react-icons/io";
 
 const AuthModal = ({ setAuthModal }) => {
   const navigate = useNavigate();
 
   const [searchParams] = useSearchParams();
-  const labelFromUrl = searchParams.get("auth")
+  const labelFromUrl = searchParams.get("auth");
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
@@ -45,9 +46,9 @@ const AuthModal = ({ setAuthModal }) => {
 
           <button
             onClick={() => setAuthModal(false)}
-            className="px-4 py-2 font-bold text-xl text-red-500 tracking-widest hover:text-red-600 transition duration-300"
+            className="px-4 py-2 font-bold text-3xl text-red-500 tracking-widest hover:text-red-600 transition duration-300"
           >
-            X
+            <IoMdClose />
           </button>
         </div>
         {labelFromUrl === "login" ? <LoginForm /> : <RegisterForm />}
