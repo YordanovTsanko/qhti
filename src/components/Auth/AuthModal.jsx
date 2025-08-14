@@ -17,7 +17,7 @@ const AuthModal = ({ setAuthModal }) => {
       <div
         role="dialog"
         aria-modal="true"
-        className="relative z-50 w-full lg:max-w-[60vw] mx-4 bg-white shadow-custom p-6"
+        className="relative z-50 w-full lg:max-w-[60vw] mx-4 bg-white shadow-custom max-h-[80vh] overflow-y-auto p-6"
       >
         <div className="border-b-2 border-black flex items-center justify-between">
           <div className="flex">

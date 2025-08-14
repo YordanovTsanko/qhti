@@ -1,24 +1,16 @@
 import React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
+import { Formik, Form } from "formik";
 import { Link } from "react-router-dom";
 import facebook from "../../assets/facebook-png.png";
 import google from "../../assets/google-png.png";
+import { loginSchema } from "../../utils/yup/authSchema";
+import FieldWrapper from "./FieldWrapper";
 
 const LoginForm = () => {
   const initialValues = {
     email: "",
     password: "",
   };
-
-  const validationSchema = Yup.object({
-    email: Yup.string()
-      .email("Невалиден формат на имейл")
-      .required("Имейлът е задължителен"),
-    password: Yup.string()
-      .min(6, "Паролата трябва да бъде поне 6 символа")
-      .required("Паролата е задължителна"),
-  });
 
   const onSubmit = (values, { setSubmitting }) => {
     console.log("Login Data:", values);
@@ -31,50 +23,19 @@ const LoginForm = () => {
     <div className="w-full">
       <Formik
         initialValues={initialValues}
-        validationSchema={validationSchema}
+        validationSchema={loginSchema}
         onSubmit={onSubmit}
       >
         {({ isSubmitting }) => (
-          <Form className="flex flex-col gap-2 p-4 items-start">
-            <div className="flex flex-col w-full">
-              <label
-                htmlFor="email"
-                className="font-semibold font-sans tracking-tight mb-1 after:ps-1 after:content-['*'] after:text-red-500"
-              >
-                Email
-              </label>
-              <Field
-                type="email"
-                name="email"
-                id="email"
-                className="border border-black px-3 py-1 rounded-xl  w-full lg:w-[20vw]"
-              />
-              <ErrorMessage
-                name="email"
-                component="div"
-                className="text-red-500 text-sm"
-              />
-            </div>
+          <Form className="flex flex-col p-4 gap-2 items-start">
+            <FieldWrapper label="Email" name="email" type="email" id="email" />
+            <FieldWrapper
+              label="Парола"
+              name="password"
+              type="password"
+              id="password"
+            />
 
-            <div className="flex flex-col w-full">
-              <label
-                htmlFor="password"
-                className="font-semibold font-sans tracking-tight mb-1 after:ps-1 after:content-['*'] after:text-red-500"
-              >
-                Парола
-              </label>
-              <Field
-                type="password"
-                name="password"
-                id="password"
-                className="border border-black px-3 py-1 rounded-xl w-full lg:w-[20vw]"
-              />
-              <ErrorMessage
-                name="password"
-                component="div"
-                className="text-red-500 text-sm"
-              />
-            </div>
             <Link
               to="/forgotten-password"
               className="text-blue-500 font-semibold text-sm font-sans underline tracking-tighter hover:text-blue-400 transition duration-300"
@@ -84,9 +45,9 @@ const LoginForm = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="bg-primary text-white py-1 mt-4 w-full lg:w-[20vw] rounded-xl hover:bg-primary/80 transition duration-300 disabled:opacity-50"
+              className="bg-primary text-white font-sans py-1 mt-4 w-full lg:w-[20vw] rounded-xl hover:bg-primary/80 transition duration-300 disabled:opacity-50"
             >
-              {isSubmitting ? "Вписване..." : "Вход"}
+              {isSubmitting ? "ВПИСВАНЕ..." : "ВХОД"}
             </button>
           </Form>
         )}
