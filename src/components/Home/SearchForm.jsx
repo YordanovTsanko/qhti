@@ -121,7 +121,7 @@ const SearchForm = ({ onSubmit }) => {
                   className="w-auto h-14"
                 />
               </div>
-              <div className="flex gap-1 items-center group cursor-pointer self-end md:self-auto">
+              <div className="flex gap-1 mb-6 lg:md-0 items-center group cursor-pointer self-end md:self-auto order-1 md:order-2">
                 <HistoryIcon className="w-8 h-8 hover:text-orange-600" />
                 <h3 className="text-secondary font-bold text-sm xl:text-lg group-hover:text-orange-600">
                   ВАШИТЕ ПОСЛЕДНИ ТЪРСЕНИЯ
@@ -140,7 +140,9 @@ const SearchForm = ({ onSubmit }) => {
 
                   return (
                     <div key={key} className="flex flex-col gap-1">
-                      <label className="font-bold text-sm md:text-md">{label}</label>
+                      <label className="font-bold text-sm md:text-md">
+                        {label}
+                      </label>
                       {Array.isArray(val) ? (
                         <Field
                           as="select"
@@ -169,7 +171,9 @@ const SearchForm = ({ onSubmit }) => {
 
               <div className="grid grid-cols-2 gap-4 flex-1 w-full md:w-auto">
                 <div className="flex flex-col gap-1">
-                  <label className="font-bold text-sm md:text-md">НАМИРА СЕ В:</label>
+                  <label className="font-bold text-sm md:text-md">
+                    НАМИРА СЕ В:
+                  </label>
                   <Field
                     as="select"
                     name="location1"
@@ -190,7 +194,9 @@ const SearchForm = ({ onSubmit }) => {
                 </div>
 
                 <div className="flex flex-col gap-1 col-span-2">
-                  <label className="font-bold text-sm md:text-md">ПОДРЕДИ РЕЗУЛТАТИТЕ ПО:</label>
+                  <label className="font-bold text-sm md:text-md">
+                    ПОДРЕДИ РЕЗУЛТАТИТЕ ПО:
+                  </label>
                   <Field
                     as="select"
                     name="sortBy"
@@ -226,7 +232,7 @@ const SearchForm = ({ onSubmit }) => {
               </div>
             </div>
 
-            <div className="flex gap-4 mt-2 xl:-mt-[18px] mb-2 text-xs font-light">
+            <div className="flex gap-4 mt-6 xl:-mt-[18px] mb-2 text-xs font-light">
               <label className="flex items-center gap-1">
                 <Field
                   type="radio"
