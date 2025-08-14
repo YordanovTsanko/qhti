@@ -5,6 +5,8 @@ import { ReactComponent as ProfileIcon } from "../assets/profile.svg";
 import { useEffect, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { motion, AnimatePresence } from "framer-motion";
+import AuthDropDown from "./Auth/AuthDropDown";
+import ProfileDropDown from "./Auth/ProfileDropDown";
 
 const navLinks = [
   {
@@ -108,28 +110,7 @@ const NavBar = ({ setAuthModal }) => {
               {">"}
             </span>
           </div>
-          {openProfile && (
-            <div className="absolute top-12 right-0 w-44 bg-white shadow-custom flex flex-col z-30">
-              <button
-                type="button"
-                onClick={() => {
-                  handleButtonClick("login");
-                }}
-                className="bg-secondary text-start text-white ps-4 py-1 font-semibold hover:bg-secondary/90 transition duration-300"
-              >
-                ВХОД
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  handleButtonClick("register");
-                }}
-                className="text-primary text-start ps-4 py-1 font-semibold hover:text-primary/90 transition duration-300"
-              >
-                РЕГИСТРИРАЙ СЕ
-              </button>
-            </div>
-          )}
+          {openProfile && (!localStorage.getItem("token") ? <AuthDropDown handleButtonClick={handleButtonClick}/> : <ProfileDropDown />)}
         </div>
         <Link
           to="/"
