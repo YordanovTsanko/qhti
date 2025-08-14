@@ -29,7 +29,7 @@ const App = () => {
     <Router>
       <div className="flex flex-col min-h-screen bg-primary">
         <NavBar setAuthModal={setAuthModal} />
-        <main >
+        <main  className="flex-grow flex">
           <MainLayout />
         </main>
         <Footer />

@@ -10,7 +10,7 @@ const Container = ({ children }) => {
         </div>
       </div>
 
-      <main className="mx-auto">{children}</main>
+      <main className="flex-grow mx-auto">{children}</main>
 
       <div className="w-64 p-4 hidden lg:block">
         <div className="sticky top-4">

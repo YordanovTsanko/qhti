@@ -10,7 +10,7 @@ const Categories = () => {
   };
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-2 py-6">
+    <div className="w-full max-w-5xl mx-auto px-2 py-6">
       <div className="flex flex-wrap justify-center gap-2 lg:gap-4">
         {categories.map(({ src, alt, label, eu }, i) => (
           <div

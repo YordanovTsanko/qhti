@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link } from "react-router-dom";
 import { registerSchema } from "../../utils/yup/authSchema";
 import FieldWrapper from "./FieldWrapper";
 
 const RegisterForm = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const initialValues = {
     accountType: "private",
     fullName: "",
@@ -55,6 +69,21 @@ const RegisterForm = () => {
     { name: "confirmPassword", label: "Потвърди паролата", type: "password" },
   ];
 
+  const companyMobileFields = [
+    { name: "companyName", label: "Име на фирма" },
+    { name: "storeName", label: "Име на магазин" },
+    { name: "email", label: "Email", type: "email" },
+    { name: "address", label: "Адрес" },
+    { name: "bulstat", label: "Булстат" },
+    { name: "city", label: "Град/Село" },
+    {
+      name: "phone",
+      label: "Телефонен номер (няма да бъде видим на профила Ви)",
+    },
+    { name: "password", label: "Парола", type: "password" },
+    { name: "confirmPassword", label: "Потвърди паролата", type: "password" },
+  ];
+
   return (
     <Formik
       initialValues={initialValues}
@@ -88,30 +117,45 @@ const RegisterForm = () => {
           )}
 
           {values.accountType === "company" && (
-            <div className="grid sm:grid-cols-2 gap-4 max-w-4xl mt-4">
-              <div className="flex flex-col gap-2">
-                {companyLeft.map((f) => (
-                  <FieldWrapper
-                    key={f.name}
-                    label={f.label}
-                    name={f.name}
-                    type={f.type}
-                  />
-                ))}
-              </div>
-
-              <div className="flex flex-col gap-2 w-full">
-                {companyRight.map((f) => (
-                  <FieldWrapper
-                    key={f.name}
-                    label={f.label}
-                    name={f.name}
-                    type={f.type}
-                  />
-                ))}
-              </div>
+            <div className="max-w-4xl mt-4">
+              {isMobile ? (
+                <div className="grid grid-cols-1 gap-2">
+                  {companyMobileFields.map((f) => (
+                    <FieldWrapper
+                      key={f.name}
+                      label={f.label}
+                      name={f.name}
+                      type={f.type}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-2">
+                    {companyLeft.map((f) => (
+                      <FieldWrapper
+                        key={f.name}
+                        label={f.label}
+                        name={f.name}
+                        type={f.type}
+                      />
+                    ))}
+                  </div>
+                  <div className="flex flex-col gap-2 w-full">
+                    {companyRight.map((f) => (
+                      <FieldWrapper
+                        key={f.name}
+                        label={f.label}
+                        name={f.name}
+                        type={f.type}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           )}
+
           <label className="flex items-start gap-2 mt-4">
             <Field type="checkbox" name="agree" className="mt-1" />
             <span className="text-sm font-sans font-semibold">

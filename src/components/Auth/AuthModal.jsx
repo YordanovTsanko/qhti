@@ -46,7 +46,7 @@ const AuthModal = ({ setAuthModal }) => {
 
           <button
             onClick={() => setAuthModal(false)}
-            className="px-4 sm:py-2 font-bold text-xl sm:text-3xl text-red-500 tracking-widest hover:text-red-600 transition duration-300"
+            className="px-4 font-bold text-xl sm:text-3xl text-red-500 tracking-widest hover:text-red-600 transition duration-300"
           >
             <IoMdClose />
           </button>
