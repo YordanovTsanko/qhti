@@ -28,7 +28,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div>
+    <div className="w-full">
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -36,7 +36,7 @@ const LoginForm = () => {
       >
         {({ isSubmitting }) => (
           <Form className="flex flex-col gap-2 p-4 items-start">
-            <div className="flex flex-col">
+            <div className="flex flex-col w-full">
               <label
                 htmlFor="email"
                 className="font-semibold font-sans tracking-tight mb-1 after:ps-1 after:content-['*'] after:text-red-500"
@@ -47,7 +47,7 @@ const LoginForm = () => {
                 type="email"
                 name="email"
                 id="email"
-                className="border border-black px-3 py-1 rounded-xl w-[20vw]"
+                className="border border-black px-3 py-1 rounded-xl  w-full lg:w-[20vw]"
               />
               <ErrorMessage
                 name="email"
@@ -56,7 +56,7 @@ const LoginForm = () => {
               />
             </div>
 
-            <div className="flex flex-col">
+            <div className="flex flex-col w-full">
               <label
                 htmlFor="password"
                 className="font-semibold font-sans tracking-tight mb-1 after:ps-1 after:content-['*'] after:text-red-500"
@@ -67,7 +67,7 @@ const LoginForm = () => {
                 type="password"
                 name="password"
                 id="password"
-                className="border border-black px-3 py-1 rounded-xl w-[20vw]"
+                className="border border-black px-3 py-1 rounded-xl w-full lg:w-[20vw]"
               />
               <ErrorMessage
                 name="password"
@@ -84,20 +84,20 @@ const LoginForm = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="bg-primary text-white py-1 mt-4 w-[20vw] rounded-xl hover:bg-primary/80 transition duration-300 disabled:opacity-50"
+              className="bg-primary text-white py-1 mt-4 w-full lg:w-[20vw] rounded-xl hover:bg-primary/80 transition duration-300 disabled:opacity-50"
             >
               {isSubmitting ? "Вписване..." : "Вход"}
             </button>
           </Form>
         )}
       </Formik>
-      <div className="max-w-[20vw] flex flex-col gap-4 items-center mx-4">
+      <div className=" lg:max-w-[20vw] flex flex-col gap-4 items-center mx-4">
         <h2 className="text-xl">ИЛИ</h2>
-        <button className="rounded-2xl bg-[#45619d] text-white w-full py-[6px] text-md flex items-center justify-center transition duration-300 hover:bg-primary/90 font-sans">
+        <button className="rounded-2xl bg-[#45619d] text-white w-full py-[6px] text-sm sm:text-md flex items-center justify-center transition duration-300 hover:bg-primary/90 font-sans">
           <img src={facebook} alt="Facebook" className="w-6 h-6 inline mr-2" />
           ВХОД С FACEBOOK
         </button>
-        <button className="rounded-2xl bg-gray-200 w-full py-[6px] text-md flex items-center justify-center transition duration-300 hover:bg-gray-300 font-sans">
+        <button className="rounded-2xl bg-gray-200 w-full py-[6px] text-sm sm:text-md flex items-center justify-center transition duration-300 hover:bg-gray-300 font-sans">
           <img src={google} alt="Google" className="w-6 h-6 inline mr-2" />
           ВХОД С GOOGLE
         </button>

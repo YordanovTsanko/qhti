@@ -10,7 +10,7 @@ const Categories = () => {
   };
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 py-6">
+    <div className="w-full max-w-6xl mx-auto px-2 py-6">
       <div className="flex flex-wrap justify-center gap-2 lg:gap-4">
         {categories.map(({ src, alt, label, eu }, i) => (
           <div
@@ -31,7 +31,7 @@ const Categories = () => {
               <img
                 src={src}
                 alt={alt}
-                className="h-16 md:h-20 w-auto object-contain mx-auto"
+                className="h-10 sm:h-16 md:h-20 w-auto object-contain mx-auto"
               />
             </div>
             <h4 className="text-center text-secondary group-hover:text-white font-bold text-xs sm:text-sm md:text-base">

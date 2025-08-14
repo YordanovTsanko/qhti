@@ -24,7 +24,7 @@ const Footer = () => {
             <Link
               key={index}
               to={link.path}
-              className="text-white text-sm font-semibold hover:text-gray-300 transition"
+              className="text-white  text-xs sm:text-sm font-semibold hover:text-gray-300 transition"
             >
               {link.label}
             </Link>
@@ -32,21 +32,21 @@ const Footer = () => {
         </div>
         <div className="flex flex-col space-y-2 items-end">
           <Link to="/">
-            <img src={logo} alt="Logo" className="h-14 mb-2 w-auto" />
+            <img src={logo} alt="Logo" className="h-8 sm:h-14 mb-2 w-auto" />
           </Link>
           <Link
             to="/something"
-            className="text-white text-sm font-bold hover:text-gray-300 transition"
+            className="text-white text-xs sm:text-sm font-bold hover:text-gray-300 transition"
           >
             БИОНД МЕДИЯ ООД
           </Link>
           <Link
             to="/something"
-            className="text-white text-sm font-semibold hover:text-gray-300 transition"
+            className="text-white text-xs sm:text-sm font-semibold hover:text-gray-300 transition"
           >
             info@qhti.bg
           </Link>
-          <FacebookIcon className="h-7 w-7 hover:fill-gray-200 transition cursor-pointer" fill="white" />
+          <FacebookIcon className="h-5 w-5 sm:h-7 sm:w-7 hover:fill-gray-200 transition cursor-pointer" fill="white" />
         </div>
       </div>
       <div className="flex justify-center bg-white">

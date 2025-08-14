@@ -11,7 +11,7 @@ const NewProducts = ({ title, products }) => {
         setItemsPerPage(5);
       } else if (window.innerWidth >= 1280) {
         setItemsPerPage(4);
-      } else if (window.innerWidth >= 1024) {
+      } else if (window.innerWidth >= 640) {
         setItemsPerPage(3);
       } else {
         setItemsPerPage(2);
@@ -45,17 +45,17 @@ const NewProducts = ({ title, products }) => {
         <button
           onClick={goToPrevPage}
           disabled={currentPage === 0}
-          className="pe-3 text-white disabled:opacity-50"
+          className="ps-1 sm:pe-3 text-white disabled:opacity-50"
         >
           <RiArrowLeftSLine size={24} />
         </button>
-        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6 flex-1">
+        <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-2 sm:gap-6 flex-1">
           {currentProducts.map(({ src, alt, title, price, location, date }, i) => (
             <div key={i} className="bg-white overflow-hidden cursor-pointer">
               <img src={src} alt={alt} className="h-36 w-full object-cover" />
-              <div className="p-4">
+              <div className="p-2 sm:p-4">
                 <h3 className="font-semibold text-sm">{title}</h3>
-                <p className="font-bold text-md mt-1 mb-3">{price}</p>
+                <p className="font-bold text-md sm:mt-1 mb-1 sm:mb-3">{price}</p>
                 <p className="text-xs text-gray-600">{location}</p>
                 <p className="text-xs text-gray-500 mt-1">{date}</p>
               </div>
@@ -65,7 +65,7 @@ const NewProducts = ({ title, products }) => {
         <button
           onClick={goToNextPage}
           disabled={currentPage >= totalPages - 1}
-          className="ps-3 text-white disabled:opacity-50"
+          className="ps-1 sm:ps-3 text-white disabled:opacity-50"
         >
           <RiArrowRightSLine size={24} />
         </button>

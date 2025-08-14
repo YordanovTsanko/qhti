@@ -17,7 +17,7 @@ const AuthModal = ({ setAuthModal }) => {
       <div
         role="dialog"
         aria-modal="true"
-        className="relative z-50 w-full max-w-[60vw] mx-4 bg-white shadow-custom p-6"
+        className="relative z-50 w-full lg:max-w-[60vw] mx-4 bg-white shadow-custom p-6"
       >
         <div className="border-b-2 border-black flex items-center justify-between">
           <div className="flex">
@@ -30,7 +30,7 @@ const AuthModal = ({ setAuthModal }) => {
                 <button
                   key={value}
                   onClick={() => navigate(`?auth=${value}`)}
-                  className={`px-4 py-2 font-semibold text-xl transition duration-300 border-t-2 border-black 
+                  className={`px-2 sm:px-4 py-2 font-semibold text-xs sm:text-xl transition duration-300 border-t-2 border-black 
           ${i === 0 ? "border-l-2" : "border-r-2"}
           ${
             isActive
@@ -46,7 +46,7 @@ const AuthModal = ({ setAuthModal }) => {
 
           <button
             onClick={() => setAuthModal(false)}
-            className="px-4 py-2 font-bold text-3xl text-red-500 tracking-widest hover:text-red-600 transition duration-300"
+            className="px-4 sm:py-2 font-bold text-xl sm:text-3xl text-red-500 tracking-widest hover:text-red-600 transition duration-300"
           >
             <IoMdClose />
           </button>
