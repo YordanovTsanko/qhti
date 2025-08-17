@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import { useEffect, useState } from "react";
 import AuthModal from "./components/Auth/AuthModal";
+import Ads from "./pages/Ads";
 
 const App = () => {
   const [authModal, setAuthModal] = useState(false);
@@ -43,6 +44,7 @@ const MainLayout = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/obiavi" element={<Ads />} />
       <Route path="/*" element={<ErrorPage />} />
     </Routes>
   );

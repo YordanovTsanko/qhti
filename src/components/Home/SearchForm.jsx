@@ -24,6 +24,12 @@ const SearchForm = ({ onSubmit }) => {
 
   const [category, setCategory] = useState(filterParam || categories[0]?.eu);
 
+const handleSearch = (values)=>{
+  console.log(values);
+  navigate('/obiavi')
+  
+}
+
   useEffect(() => {
     if (category !== filterParam) {
       const newSearchParams = new URLSearchParams(location.search);
@@ -209,6 +215,7 @@ const SearchForm = ({ onSubmit }) => {
                 <div className="flex flex-col gap-4 col-span-2">
                   <button
                     type="submit"
+                    onClick={() => handleSearch(values)}
                     className="bg-primary justify-center flex items-center gap-1 font-semibold text-3xl text-white px-6 py-2 rounded-3xl"
                   >
                     <SearchIcon className="h-8 w-8" />

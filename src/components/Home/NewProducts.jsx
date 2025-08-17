@@ -52,7 +52,7 @@ const NewProducts = ({ title, products }) => {
         <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-2 sm:gap-6 flex-1">
           {currentProducts.map(({ src, alt, title, price, location, date }, i) => (
             <div key={i} className="bg-white overflow-hidden cursor-pointer">
-              <img src={src} alt={alt} className="h-36 w-full object-cover" />
+              <img src={src[0]} alt={alt} className="h-36 w-full object-cover" />
               <div className="p-2 sm:p-4">
                 <h3 className="font-semibold text-sm">{title}</h3>
                 <p className="font-bold text-md sm:mt-1 mb-1 sm:mb-3">{price}</p>
