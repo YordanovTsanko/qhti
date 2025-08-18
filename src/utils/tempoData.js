@@ -1,13 +1,36 @@
 import productone from "../assets/product-1.png";
 import producttwo from "../assets/product-2.png";
 import productthree from "../assets/product-3.png";
+import companyImg from "../assets/bulstar-logo-1-300x225.png.png";
+
+export const companyUser = {
+  id: 101,
+  name: "БУЛСТАР АУТДОР ООД",
+  type: "business",
+  image: companyImg,
+  email: "yachts@bulstar.bg",
+  passwrod: "123456",
+  phone: "0889651515",
+};
+export const user = {
+  id: 100,
+  name: "Тестов Акаунт",
+  type: "user",
+  image: null,
+  email: "yachts@bulstar.bg",
+  passwrod: "123456",
+  phone: "0889651515",
+};
 
 export const temporaryProducts = [
   {
+    id: 1,
+    referenceNumber: "00067",
     src: [productone, producttwo, productthree, productone],
     alt: "Product 1",
     title: "COHAP HDS PRO",
     price: "350лв.",
+    vat: true,
     location: "Бургас, ж-к Славейков",
     date: "Обновено 21.09.2024",
     check: [
@@ -21,10 +44,13 @@ export const temporaryProducts = [
     desc: "Продавам сонар симпад круиз 5 инча, много добър сонар, чисто нов купен през 2017 и вече е с изтекла гаранция иначе не е ползван",
   },
   {
+    id: 2,
+    referenceNumber: "00068",
     src: [productone, producttwo, productthree, productone],
     alt: "Product 2",
     title: "COHAP HDS PRO",
     price: "350лв.",
+    vat: false,
     location: "Бургас, ж-к Славейков",
     date: "Обновено 21.09.2024",
     check: [
@@ -38,10 +64,13 @@ export const temporaryProducts = [
     desc: "Продавам сонар симпад круиз 5 инча, много добър сонар, чисто нов купен през 2017 и вече е с изтекла гаранция иначе не е ползван",
   },
   {
+    id: 3,
+    referenceNumber: "00063",
     src: [producttwo, productone, productthree, productone],
     alt: "Product 3",
-    title: "COHAP HDS PRO",
+    title: "COHAP HDS PRO SIMARD 2012",
     price: "ПО ДОГОВАРЯНЕ",
+    vat: false,
     location: "Бургас, ж-к Славейков",
     date: "Обновено 21.09.2024",
     check: [
@@ -55,10 +84,13 @@ export const temporaryProducts = [
     desc: "Продавам сонар симпад круиз 5 инча, много добър сонар, чисто нов купен през 2017 и вече е с изтекла гаранция иначе не е ползван",
   },
   {
+    id: 4,
+    referenceNumber: "00167",
     src: [productthree, productone, producttwo, productone],
     alt: "Product 3",
     title: "COHAP HDS PRO",
     price: "ПО ДОГОВАРЯНЕ",
+    vat: false,
     location: "Бургас, ж-к Славейков",
     date: "Обновено 21.09.2024",
     check: [
@@ -72,10 +104,13 @@ export const temporaryProducts = [
     desc: "Продавам сонар симпад круиз 5 инча, много добър сонар, чисто нов купен през 2017 и вече е с изтекла гаранция иначе не е ползван",
   },
   {
+    id: 5,
+    referenceNumber: "01157",
     src: [producttwo, productthree, productone, productone],
     alt: "Product 3",
     title: "COHAP HDS PRO",
     price: "ПО ДОГОВАРЯНЕ",
+    vat: false,
     location: "Бургас, ж-к Славейков",
     date: "Обновено 21.09.2024",
     check: [

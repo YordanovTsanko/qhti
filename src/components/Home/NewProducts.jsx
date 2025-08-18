@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 
 const NewProducts = ({ title, products }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(2);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const updateItemsPerPage = () => {
@@ -50,17 +53,29 @@ const NewProducts = ({ title, products }) => {
           <RiArrowLeftSLine size={24} />
         </button>
         <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-2 sm:gap-6 flex-1">
-          {currentProducts.map(({ src, alt, title, price, location, date }, i) => (
-            <div key={i} className="bg-white overflow-hidden cursor-pointer">
-              <img src={src[0]} alt={alt} className="h-36 w-full object-cover" />
-              <div className="p-2 sm:p-4">
-                <h3 className="font-semibold text-sm">{title}</h3>
-                <p className="font-bold text-md sm:mt-1 mb-1 sm:mb-3">{price}</p>
-                <p className="text-xs text-gray-600">{location}</p>
-                <p className="text-xs text-gray-500 mt-1">{date}</p>
+          {currentProducts.map(
+            ({ src, alt, title, price, location, date, id }) => (
+              <div
+                key={id}
+                onClick={() => navigate(`/obiava/${id}`)}
+                className="bg-white overflow-hidden cursor-pointer"
+              >
+                <img
+                  src={src[0]}
+                  alt={alt}
+                  className="h-36 w-full object-cover"
+                />
+                <div className="p-2 sm:p-4">
+                  <h3 className="font-semibold text-sm">{title}</h3>
+                  <p className="font-bold text-md sm:mt-1 mb-1 sm:mb-3">
+                    {price}
+                  </p>
+                  <p className="text-xs text-gray-600">{location}</p>
+                  <p className="text-xs text-gray-500 mt-1">{date}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          )}
         </div>
         <button
           onClick={goToNextPage}

@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import { IoLocationSharp } from "react-icons/io5";
 import { FaCheck, FaRegHeart, FaHeart } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const AdsCard = ({ product }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
+  const navigate = useNavigate();
+
   return (
-    <div className="bg-white rounded-2xl py-5 px-4 flex flex-col sm:flex-row gap-8 shadow-custom cursor-pointer">
+    <div
+      onClick={() => navigate(`/obiava/${product.id}`)}
+      className="bg-white rounded-2xl py-5 px-4 flex flex-col sm:flex-row gap-8 shadow-custom cursor-pointer"
+    >
       <div className="flex flex-shrink-0 gap-2 justify-center sm:justify-normal">
         <img src={product.src[0]} className="h-40 w-40" alt="Error" />
         <div className="flex flex-col gap-2">
@@ -33,9 +39,11 @@ const AdsCard = ({ product }) => {
           </div>
           <div className="flex-col items-center hidden sm:flex">
             <h2 className="text-xl font-semibold">{product.price}</h2>
-            <h3 className="text-sm font-semibold text-center">
-              ЦЕНАТА Е С ДДС
-            </h3>
+            {product.price !== "ПО ДОГОВАРЯНЕ" && (
+              <h3 className="text-sm font-semibold text-center">
+                ЦЕНАТА Е С ДДС
+              </h3>
+            )}
           </div>
         </div>
         <div className="flex flex-col ">
@@ -47,7 +55,10 @@ const AdsCard = ({ product }) => {
         </div>
       </div>
       <div
-        onClick={() => setIsFavorite(!isFavorite)}
+        onClick={(e) => {
+          setIsFavorite(!isFavorite);
+          e.stopPropagation();
+        }}
         className="cursor-pointer sm:-ms-5 self-start flex sm:block justify-between w-full sm:w-auto"
       >
         {!isFavorite ? (
@@ -56,8 +67,12 @@ const AdsCard = ({ product }) => {
           <FaHeart className="h-8 w-8 text-red-500" />
         )}
         <div className="flex-col items-center flex sm:hidden">
-          <h2 className="text-xl font-semibold">{product.price}</h2>
-          <h3 className="text-sm font-semibold text-center">ЦЕНАТА Е С ДДС</h3>
+          <h2 className="text-xl font-semibold">{product.price}</h2>{" "}
+          {product.price !== "ПО ДОГОВАРЯНЕ" && (
+            <h3 className="text-sm font-semibold text-center">
+              ЦЕНАТА Е С ДДС
+            </h3>
+          )}
         </div>
       </div>
     </div>

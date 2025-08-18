@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import { useEffect, useState } from "react";
 import AuthModal from "./components/Auth/AuthModal";
 import Ads from "./pages/Ads";
+import SelectedAd from "./pages/SelectedAd";
 
 const App = () => {
   const [authModal, setAuthModal] = useState(false);
@@ -45,6 +46,7 @@ const MainLayout = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/obiavi" element={<Ads />} />
+      <Route path="/obiava/:id" element={<SelectedAd />} />
       <Route path="/*" element={<ErrorPage />} />
     </Routes>
   );
