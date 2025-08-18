@@ -1,7 +1,16 @@
 import React from "react";
 import profilePicture from "../../assets/profile-picture.avif";
+import { useNavigate } from "react-router-dom";
 
 const ProfileDropDown = () => {
+
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    localStorage.removeItem("auth");
+    return navigate("/");
+  };
+
   return (
     <div className="absolute top-12 right-0 w-auto min-w-44 bg-white shadow-custom flex flex-col z-30">
       <div className="p-2 flex items-center h-full">
@@ -48,6 +57,7 @@ const ProfileDropDown = () => {
       </button>
       <button
         type="button"
+        onClick={handleLogout}
         className="text-primary text-start ps-2 py-1 font-semibold hover:text-primary/90 hover:bg-gray-200/70 transition duration-300"
       >
         ИЗХОД

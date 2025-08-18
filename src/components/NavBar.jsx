@@ -110,7 +110,7 @@ const NavBar = ({ setAuthModal }) => {
               {">"}
             </span>
           </div>
-          {openProfile && (!localStorage.getItem("token") ? <AuthDropDown handleButtonClick={handleButtonClick}/> : <ProfileDropDown />)}
+          {openProfile && (!localStorage.getItem("auth") ? <AuthDropDown handleButtonClick={handleButtonClick}/> : <ProfileDropDown />)}
         </div>
         <Link
           to="/"

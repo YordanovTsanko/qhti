@@ -51,7 +51,7 @@ const AuthModal = ({ setAuthModal }) => {
             <IoMdClose />
           </button>
         </div>
-        {labelFromUrl === "login" ? <LoginForm /> : <RegisterForm />}
+        {labelFromUrl === "login" ? <LoginForm setAuthModal={setAuthModal} /> : <RegisterForm />}
       </div>
     </div>
   );

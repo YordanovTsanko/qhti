@@ -1,19 +1,33 @@
 import React from "react";
 import { Formik, Form } from "formik";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import facebook from "../../assets/facebook-png.png";
 import google from "../../assets/google-png.png";
 import { loginSchema } from "../../utils/yup/authSchema";
 import FieldWrapper from "./FieldWrapper";
 
-const LoginForm = () => {
+const LoginForm = ({setAuthModal}) => {
+
+  const navigate = useNavigate();
+
   const initialValues = {
     email: "",
     password: "",
   };
 
+  const loginFunction = ({email, password}) => {
+    console.log(email, password);
+    if (email === "yachts@bulstar.bg" && password === "123456") {
+      localStorage.setItem("auth", JSON.stringify(email));
+      setAuthModal(false);
+      return navigate("/");
+    } else {
+      return console.log("Invalid email or password");
+    }
+  };
+
   const onSubmit = (values, { setSubmitting }) => {
-    console.log("Login Data:", values);
+    loginFunction(values);
     setTimeout(() => {
       setSubmitting(false);
     }, 1000);
