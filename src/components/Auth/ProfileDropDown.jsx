@@ -2,12 +2,13 @@ import React from "react";
 import profilePicture from "../../assets/profile-picture.avif";
 import { useNavigate } from "react-router-dom";
 
-const ProfileDropDown = () => {
+const ProfileDropDown = ({handleClickProfile}) => {
 
   const navigate = useNavigate()
 
-  const handleLogout = () => {
+    const handleLogout = () => {
     localStorage.removeItem("auth");
+    handleClickProfile()
     return navigate("/");
   };
 

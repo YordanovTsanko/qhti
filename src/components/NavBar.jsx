@@ -35,6 +35,8 @@ const NavBar = ({ setAuthModal }) => {
   const [openProfile, setOpenProfile] = useState(false);
   const [mobileNav, setMobileNav] = useState(false);
 
+  const auth = localStorage.getItem("auth");
+
   const handleClickProfile = () => {
     setOpenProfile(!openProfile);
   };
@@ -43,6 +45,15 @@ const NavBar = ({ setAuthModal }) => {
     handleClickProfile();
     setAuthModal(true);
     navigate(`?auth=${path}`, { replace: true });
+  };
+
+  const handleAddAd = () => {
+    if (auth) {
+      return navigate("/add-ad");
+    } else {
+      setAuthModal(true);
+      return navigate(`?auth=login`, { replace: true });
+    }
   };
 
   useEffect(() => {
@@ -110,14 +121,19 @@ const NavBar = ({ setAuthModal }) => {
               {">"}
             </span>
           </div>
-          {openProfile && (!localStorage.getItem("auth") ? <AuthDropDown handleButtonClick={handleButtonClick}/> : <ProfileDropDown />)}
+          {openProfile &&
+            (!auth ? (
+              <AuthDropDown handleButtonClick={handleButtonClick} />
+            ) : (
+              <ProfileDropDown handleClickProfile={handleClickProfile} />
+            ))}
         </div>
-        <Link
-          to="/"
+        <button
+          onClick={handleAddAd}
           className="hidden md:block bg-primary tracking-widest text-white text-lg font-semibold py-2 px-3 rounded-3xl shadow hover:bg-primary/90 transition"
         >
           ДОБАВИ ОБЯВА
-        </Link>
+        </button>
       </div>
 
       <AnimatePresence>
@@ -168,13 +184,15 @@ const NavBar = ({ setAuthModal }) => {
 
               <div className="border-t pt-4">
                 <div className="mt-4 w-full">
-                  <Link
-                    to="/"
-                    onClick={() => setMobileNav(false)}
+                  <button
+                    onClick={() => {
+                      setMobileNav(false);
+                      handleAddAd();
+                    }}
                     className="inline-block bg-primary text-white py-2 px-4 w-full text-center rounded-3xl font-semibold"
                   >
                     ДОБАВИ ОБЯВА
-                  </Link>
+                  </button>
                 </div>
               </div>
             </motion.aside>
