@@ -6,8 +6,7 @@ import adImg from "../assets/casino_landing_1500lv_756x479_2023.png";
 import { useNavigate } from "react-router-dom";
 
 const Ads = () => {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <Container>
@@ -19,21 +18,21 @@ const Ads = () => {
           <button
             type="button"
             onClick={() => navigate("/")}
-            className=" text-white font-semibold text-xs sm:text-xl underline underline-offset-2 hover:text-gray-300 transition duration-300"
+            className=" text-white font-semibold text-xs sm:text-lg xl:text-xl underline underline-offset-2 hover:text-gray-300 transition duration-300"
           >
             НОВО ТЪРСЕНЕ
           </button>
           <div className="bg-white w-[1px] h-5"></div>
           <button
             type="button"
-            className="text-white font-semibold  text-xs sm:text-xl underline underline-offset-2 hover:text-gray-300 transition duration-300"
+            className="text-white font-semibold  text-xs sm:text-lg xl:text-xl underline underline-offset-2 hover:text-gray-300 transition duration-300"
           >
             ПОДРОБНО ТЪРСЕНЕ
           </button>
           <div className="bg-white w-[1px] h-5"></div>
           <button
             type="button"
-            className=" text-white font-semibold  text-xs sm:text-xl underline underline-offset-2 hover:text-gray-300 transition duration-300"
+            className=" text-white font-semibold  text-xs sm:text-lg xl:text-xl underline underline-offset-2 hover:text-gray-300 transition duration-300"
           >
             КОРЕКЦИЯ НА ТЪРСЕНЕТО
           </button>
@@ -52,7 +51,11 @@ const Ads = () => {
                 />
               </div>
             </>
-          ) : <h2 className="text-red-600 bg-red-200 text-center py-2 px-4 rounded-xl font-bold text-md sm:text-xl lg:text-3xl">НЯМА НАМЕРЕНИ ОБЯВИ С ТОЗИ ФИЛТЪР</h2>}
+          ) : (
+            <h2 className="text-red-600 bg-red-200 text-center py-2 px-4 rounded-xl font-bold text-md sm:text-xl lg:text-3xl">
+              НЯМА НАМЕРЕНИ ОБЯВИ С ТОЗИ ФИЛТЪР
+            </h2>
+          )}
         </div>
       </div>
     </Container>

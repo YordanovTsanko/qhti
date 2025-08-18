@@ -24,11 +24,10 @@ const SearchForm = ({ onSubmit }) => {
 
   const [category, setCategory] = useState(filterParam || categories[0]?.eu);
 
-const handleSearch = (values)=>{
-  console.log(values);
-  navigate('/obiavi')
-  
-}
+  const handleSearch = (values) => {
+    console.log(values);
+    navigate("/obiavi");
+  };
 
   useEffect(() => {
     if (category !== filterParam) {
@@ -93,8 +92,8 @@ const handleSearch = (values)=>{
 
         return (
           <Form className="w-full max-w-5xl bg-white p-4 rounded-lg shadow">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
-              <div className="flex items-center gap-4 order-2 md:order-1">
+            <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row justify-between items-start sm:items-center lg:items-start xl:items-center">
+              <div className="flex items-center gap-4 order-2 sm:order-1 lg:order-2 xl:order-1">
                 <div className="flex flex-col relative items-start gap-2 mb-4">
                   <label className="font-bold">ТЪРСЕНЕ В КАТЕГОРИЯ</label>
                   <div className="relative w-[260px]">
@@ -127,7 +126,7 @@ const handleSearch = (values)=>{
                   className="w-auto h-14"
                 />
               </div>
-              <div className="flex gap-1 mb-6 lg:md-0 items-center group cursor-pointer self-end md:self-auto order-1 md:order-2">
+              <div className="flex gap-1 mb-6 lg:md-0 items-center group cursor-pointer self-end sm:self-auto order-1 sm:order-2 lg:order-1 xl:order-2 lg:self-end xl:self-auto">
                 <HistoryIcon className="w-8 h-8 hover:text-orange-600" />
                 <h3 className="text-secondary font-bold text-sm xl:text-lg group-hover:text-orange-600">
                   ВАШИТЕ ПОСЛЕДНИ ТЪРСЕНИЯ

@@ -13,7 +13,7 @@ const ProfileDropDown = ({handleClickProfile}) => {
   };
 
   return (
-    <div className="absolute top-12 right-0 w-auto min-w-44 bg-white shadow-custom flex flex-col z-30">
+    <div className="absolute top-12 right-0 w-auto min-w-56 md:min-w-44 bg-white shadow-custom flex flex-col z-30">
       <div className="p-2 flex items-center h-full">
         <img
           src={profilePicture}

@@ -22,7 +22,7 @@ const AdsCard = ({ product }) => {
         </div>
       </div>
       <div className="flex flex-col justify-between max-w-lg">
-        <div className="flex justify-between">
+        <div className="flex justify-between flex-col xl:flex-row">
           <div className="flex flex-col">
             <h2 className="text-xl font-semibold">{product.title}</h2>
             <div className="flex max-w-[350px] gap-2 mt-2 flex-wrap">
@@ -37,8 +37,8 @@ const AdsCard = ({ product }) => {
               ))}
             </div>
           </div>
-          <div className="flex-col items-center hidden sm:flex">
-            <h2 className="text-xl font-semibold">{product.price}</h2>
+          <div className="flex-row my-2 xl:my-0 gap-2 xl:gap-0 items-end xl:flex-col xl:items-center hidden sm:flex">
+            <h2 className="text-xl whitespace-nowrap font-semibold">{product.price}</h2>
             {product.price !== "ПО ДОГОВАРЯНЕ" && (
               <h3 className="text-sm font-semibold text-center">
                 ЦЕНАТА Е С ДДС
@@ -64,7 +64,7 @@ const AdsCard = ({ product }) => {
         {!isFavorite ? (
           <FaRegHeart className="h-8 w-8 text-primary" />
         ) : (
-          <FaHeart className="h-8 w-8 text-red-500" />
+          <FaHeart className="h-8 w-8 text-secondary" />
         )}
         <div className="flex-col items-center flex sm:hidden">
           <h2 className="text-xl font-semibold">{product.price}</h2>{" "}

@@ -56,24 +56,31 @@ const NewProducts = ({ title, products }) => {
           {currentProducts.map(
             ({ src, alt, title, price, location, date, id }) => (
               <div
-                key={id}
-                onClick={() => navigate(`/obiava/${id}`)}
-                className="bg-white overflow-hidden cursor-pointer"
-              >
-                <img
-                  src={src[0]}
-                  alt={alt}
-                  className="h-36 w-full object-cover"
-                />
-                <div className="p-2 sm:p-4">
-                  <h3 className="font-semibold text-sm">{title}</h3>
-                  <p className="font-bold text-md sm:mt-1 mb-1 sm:mb-3">
-                    {price}
-                  </p>
-                  <p className="text-xs text-gray-600">{location}</p>
-                  <p className="text-xs text-gray-500 mt-1">{date}</p>
-                </div>
-              </div>
+  key={id}
+  onClick={() => navigate(`/obiava/${id}`)}
+  className="bg-white cursor-pointer h-[300px] flex flex-col"
+>
+  <img
+    src={src[0]}
+    alt={alt}
+    className="h-36 w-full object-cover"
+  />
+
+  <div className="p-2 sm:p-4 flex flex-col flex-1">
+    <h3 className="font-semibold text-sm sm:text-base truncate">
+      {title}
+    </h3>
+    <p className="font-bold text-md sm:text-lg mt-1">{price}</p>
+
+    <div className="flex-1"></div>
+
+    <div>
+      <p className="text-xs sm:text-sm text-gray-600">{location}</p>
+      <p className="text-xs sm:text-sm text-gray-500 mt-1">{date}</p>
+    </div>
+  </div>
+</div>
+
             )
           )}
         </div>
