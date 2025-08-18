@@ -9,6 +9,8 @@ import Ads from "./pages/Ads";
 import SelectedAd from "./pages/SelectedAd";
 import AddAd from "./components/Ads/AddAd";
 import ProtectedRoute from "./components/ProtectedRoute";
+import MyAds from "./pages/Profile/MyAds";
+import MyFavorites from "./pages/Profile/MyFavorites";
 
 const App = () => {
   const [authModal, setAuthModal] = useState(false);
@@ -53,6 +55,22 @@ const MainLayout = () => {
         element={
           <ProtectedRoute>
             <AddAd />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/my-ads"
+        element={
+          <ProtectedRoute>
+            <MyAds />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/my-favorites"
+        element={
+          <ProtectedRoute>
+            <MyFavorites />
           </ProtectedRoute>
         }
       />

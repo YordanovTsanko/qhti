@@ -11,6 +11,8 @@ export const companyUser = {
   email: "yachts@bulstar.bg",
   passwrod: "123456",
   phone: "0889651515",
+  eik: "147026483",
+  desc:"Официален вносител на двигатели Mercury и лодки Quicksilver"
 };
 export const user = {
   id: 100,
@@ -28,6 +30,7 @@ export const temporaryProducts = [
     referenceNumber: "00067",
     src: [productone, producttwo, productthree, productone],
     alt: "Product 1",
+    views: 100,
     title: "COHAP HDS PRO",
     price: "350лв.",
     vat: true,
@@ -46,6 +49,7 @@ export const temporaryProducts = [
   {
     id: 2,
     referenceNumber: "00068",
+    views: 2222,
     src: [productone, producttwo, productthree, productone],
     alt: "Product 2",
     title: "COHAP HDS PRO",
@@ -66,6 +70,7 @@ export const temporaryProducts = [
   {
     id: 3,
     referenceNumber: "00063",
+    views: 1240,
     src: [producttwo, productone, productthree, productone],
     alt: "Product 3",
     title: "COHAP HDS PRO SIMARD 2012",
@@ -86,6 +91,7 @@ export const temporaryProducts = [
   {
     id: 4,
     referenceNumber: "00167",
+    views: 10000,
     src: [productthree, productone, producttwo, productone],
     alt: "Product 3",
     title: "COHAP HDS PRO",
@@ -106,6 +112,7 @@ export const temporaryProducts = [
   {
     id: 5,
     referenceNumber: "01157",
+    views: 590,
     src: [producttwo, productthree, productone, productone],
     alt: "Product 3",
     title: "COHAP HDS PRO",

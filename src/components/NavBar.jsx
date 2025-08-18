@@ -101,7 +101,7 @@ const NavBar = ({ setAuthModal }) => {
 
       <div className="flex items-center gap-4 lg:gap-8 relative justify-end lg:justify-normal">
         <div className="flex items-center space-x-2">
-          <Link to="/favorites">
+          <Link to="/my-favorites">
             <HearthIcon className="md:h-7 md:w-7 h-5 w-5" />
           </Link>
           <div

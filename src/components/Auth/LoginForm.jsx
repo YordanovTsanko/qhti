@@ -5,6 +5,7 @@ import facebook from "../../assets/facebook-png.png";
 import google from "../../assets/google-png.png";
 import { loginSchema } from "../../utils/yup/authSchema";
 import FieldWrapper from "./FieldWrapper";
+import { companyUser } from "../../utils/tempoData";
 
 const LoginForm = ({setAuthModal}) => {
 
@@ -16,9 +17,8 @@ const LoginForm = ({setAuthModal}) => {
   };
 
   const loginFunction = ({email, password}) => {
-    console.log(email, password);
     if (email === "yachts@bulstar.bg" && password === "123456") {
-      localStorage.setItem("auth", JSON.stringify(email));
+      localStorage.setItem("auth", JSON.stringify(companyUser));
       setAuthModal(false);
       return navigate("/");
     } else {

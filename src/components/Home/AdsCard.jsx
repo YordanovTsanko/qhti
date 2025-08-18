@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { IoLocationSharp } from "react-icons/io5";
 import { FaCheck, FaRegHeart, FaHeart } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { LuEye } from "react-icons/lu";
 
-const AdsCard = ({ product }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+const AdsCard = ({ product, myAds = false, favorite = false }) => {
+  const [isFavorite, setIsFavorite] = useState(favorite ? favorite : false);
 
   const navigate = useNavigate();
 
@@ -37,20 +38,41 @@ const AdsCard = ({ product }) => {
               ))}
             </div>
           </div>
-          <div className="flex-row my-2 xl:my-0 gap-2 xl:gap-0 items-end xl:flex-col xl:items-center hidden sm:flex">
-            <h2 className="text-xl whitespace-nowrap font-semibold">{product.price}</h2>
-            {product.price !== "ПО ДОГОВАРЯНЕ" && (
-              <h3 className="text-sm font-semibold text-center">
-                ЦЕНАТА Е С ДДС
-              </h3>
+          <div className="flex-row my-2 xl:my-0 gap-2 xl:gap-0 items-center xl:flex-col hidden sm:flex">
+            <div className="flex-row my-2 xl:my-0 gap-2 xl:gap-0 items-center xl:flex-col hidden sm:flex">
+              <h2 className="text-xl whitespace-nowrap font-semibold">
+                {product.price}
+              </h2>
+              {product.price !== "ПО ДОГОВАРЯНЕ" && (
+                <h3 className="text-sm font-semibold text-center">
+                  ЦЕНАТА Е С ДДС
+                </h3>
+              )}
+            </div>
+            {myAds && (
+              <p className="text-sm  text-gray-500 justify-self-end">
+                ID: {product.referenceNumber}
+              </p>
             )}
           </div>
         </div>
         <div className="flex flex-col ">
           <p className="text-sm text-gray-500">{product.desc}</p>
-          <div className="flex items-center gap-1 self-end">
-            <IoLocationSharp className="text-secondary" />
-            <p className="text-sm text-secondary">{product.location}</p>
+
+          <div
+            className={`flex items-center mt-1 lg:flex-col xl:flex-row ${
+              myAds ? "justify-between" : "self-end"
+            } `}
+          >
+            {myAds && (
+              <p className="text-sm flex items-center gap-1 text-blue-800 lg:self-end xl:flex-row">
+                <LuEye /> {product.views} Преглеждания
+              </p>
+            )}
+            <div className="flex items-center gap-1 self-end">
+              <IoLocationSharp className="text-secondary" />
+              <p className="text-sm text-secondary">{product.location}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -61,11 +83,11 @@ const AdsCard = ({ product }) => {
         }}
         className="cursor-pointer sm:-ms-5 self-start flex sm:block justify-between w-full sm:w-auto"
       >
-        {!isFavorite ? (
+        {!myAds && (!isFavorite ? (
           <FaRegHeart className="h-8 w-8 text-primary" />
         ) : (
           <FaHeart className="h-8 w-8 text-secondary" />
-        )}
+        ))}
         <div className="flex-col items-center flex sm:hidden">
           <h2 className="text-xl font-semibold">{product.price}</h2>{" "}
           {product.price !== "ПО ДОГОВАРЯНЕ" && (
