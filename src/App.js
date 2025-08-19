@@ -9,8 +9,9 @@ import Ads from "./pages/Ads";
 import SelectedAd from "./pages/SelectedAd";
 import AddAd from "./components/Ads/AddAd";
 import ProtectedRoute from "./components/ProtectedRoute";
-import MyAds from "./pages/Profile/MyAds";
+import MyProfile from "./pages/Profile/MyProfile";
 import MyFavorites from "./pages/Profile/MyFavorites";
+import Settings from "./pages/Profile/Settings";
 
 const App = () => {
   const [authModal, setAuthModal] = useState(false);
@@ -59,14 +60,6 @@ const MainLayout = () => {
         }
       />
       <Route
-        path="/my-ads"
-        element={
-          <ProtectedRoute>
-            <MyAds />
-          </ProtectedRoute>
-        }
-      />
-      <Route
         path="/my-favorites"
         element={
           <ProtectedRoute>
@@ -74,6 +67,24 @@ const MainLayout = () => {
           </ProtectedRoute>
         }
       />
+      <Route
+        path="/my-profile"
+        element={
+          <ProtectedRoute>
+            <MyProfile />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/settings"
+        element={
+          <ProtectedRoute>
+            <Settings />
+          </ProtectedRoute>
+        }
+      />
+
+
       <Route path="/*" element={<ErrorPage />} />
     </Routes>
   );

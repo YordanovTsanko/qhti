@@ -12,11 +12,11 @@ const ProfileDropDown = ({ handleClickProfile }) => {
   };
 
   const menuItems = [
-    { label: "ОБЯВИ", to: "/my-ads", isPrimary: true },
+    { label: "ОБЯВИ", to: "/", isPrimary: true },
     { label: "ЛЮБИМИ", to: "/my-favorites" },
-    { label: "МОЯТ ПРОФИЛ", to: "/profile" },
+    { label: "МОЯТ ПРОФИЛ", to: "/my-profile" },
     { label: "НАСТРОЙКИ", to: "/settings" },
-    { label: "МОЯТ БЕЛЕЖНИК", to: "/notebook" },
+    { label: "МОЯТ БЕЛЕЖНИК", to: "/my-notebook" },
   ];
 
   return (

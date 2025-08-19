@@ -4,7 +4,7 @@ import AdsProfileCard from "../../components/Profile/AdsProfileCard";
 import { temporaryProducts } from "../../utils/tempoData";
 import AdsCard from "../../components/Home/AdsCard";
 
-const MyAds = () => {
+const MyProfile = () => {
   const [type, setType] = useState("ads");
 
   const data = localStorage.getItem("auth")
@@ -66,4 +66,4 @@ const MyAds = () => {
   );
 };
 
-export default MyAds;
+export default MyProfile;
