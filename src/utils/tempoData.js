@@ -12,7 +12,7 @@ export const companyUser = {
   passwrod: "123456",
   phone: "0889651515",
   eik: "147026483",
-  desc:"Официален вносител на двигатели Mercury и лодки Quicksilver"
+  desc: "Официален вносител на двигатели Mercury и лодки Quicksilver",
 };
 export const user = {
   id: 100,
@@ -286,3 +286,38 @@ export const tempoDataForSearch = {
     maxPrice: 0,
   },
 };
+
+export const tempoNotes = [
+  {
+    id: 1,
+    category: "morska_elektronika",
+    typeOptions: "GPS",
+    brandOptions: "Garmin",
+    modelOptions: "EchoMap",
+    yearOptions: "2020",
+    interior: ["Винил", "Тоалетна"],
+    exterior: ["Тента, Т-ТОП"],
+    type: "business",
+    saveDate: "2022-01-01",
+  },
+  {
+    id: 2,
+    category: "lodki_i_qhti",
+    typeOptions: "Boat",
+    brandOptions: "Yamaha",
+    modelOptions: "242 Limited S",
+    yearOptions: "2019",
+    type: "private",
+    saveDate: "2023-03-15",
+  },
+  {
+    id: 3,
+    category: "djetove",
+    typeOptions: "none",
+    brandOptions: "Kawasaki",
+    modelOptions: "Spark",
+    yearOptions: "2022",
+    type: "business",
+    saveDate: "2024-06-20",
+  },
+];

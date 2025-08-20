@@ -12,6 +12,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import MyProfile from "./pages/Profile/MyProfile";
 import MyFavorites from "./pages/Profile/MyFavorites";
 import Settings from "./pages/Profile/Settings";
+import MyNotebook from "./pages/Profile/MyNotebook";
 
 const App = () => {
   const [authModal, setAuthModal] = useState(false);
@@ -80,6 +81,14 @@ const MainLayout = () => {
         element={
           <ProtectedRoute>
             <Settings />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/my-notebook"
+        element={
+          <ProtectedRoute>
+            <MyNotebook />
           </ProtectedRoute>
         }
       />
