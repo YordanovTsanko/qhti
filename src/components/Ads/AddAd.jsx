@@ -4,7 +4,7 @@ import Container from '../Container'
 const AddAd = () => {
   return (
     <Container>
-      test
+      IN PROGRESS
     </Container>
   )
 }

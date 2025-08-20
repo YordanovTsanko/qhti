@@ -13,6 +13,7 @@ import MyProfile from "./pages/Profile/MyProfile";
 import MyFavorites from "./pages/Profile/MyFavorites";
 import Settings from "./pages/Profile/Settings";
 import MyNotebook from "./pages/Profile/MyNotebook";
+import Services from "./pages/Services";
 
 const App = () => {
   const [authModal, setAuthModal] = useState(false);
@@ -52,6 +53,7 @@ const MainLayout = () => {
       <Route path="/" element={<Home />} />
       <Route path="/obiavi" element={<Ads />} />
       <Route path="/obiava/:id" element={<SelectedAd />} />
+      <Route path="/uslugi" element={<Services />} />
       <Route
         path="/add-ad"
         element={

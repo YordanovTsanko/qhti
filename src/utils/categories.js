@@ -26,6 +26,15 @@ export const categories = [
   { src: chasti, alt: "Части", label: "ЧАСТИ", eu: "chasti" },
 ];
 
+export const categoriesServices = [
+  {
+    alt: "Ремонт на двиигатели",
+    label: "РЕМОНТ НА ДВИГАТЕЛИ",
+    eu: "remont_na_dvigateli",
+  },
+  { alt: "Ремонт на лодки", label: "РЕМОНТ НА ЛОДКИ", eu: "remont_na_lodki" },
+];
+
 export const optionsLabelTranslation = {
   typeOptions: "ВИД",
   brandOptions: "МАРКА",
@@ -38,4 +47,10 @@ export const optionsLabelTranslation = {
   typeFishOptions: "ЗА ВИД РИБА",
   technicOptions: "ТЕХНИКА НА РИБОЛОВ",
   maxHp: "МАКСИМАЛНИ КОНСКИ СИЛА",
+};
+
+export const optionsLabelServicesTranslation = {
+  materialOptions: "МАТЕРИАЛ",
+  brandOptions: "МАРКА",
+  serviceOptions: "ОРТОРИЗИРАН СЕРВИЗ",
 };

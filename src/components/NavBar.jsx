@@ -17,7 +17,7 @@ const navLinks = [
   },
   {
     name: "УСЛУГИ",
-    path: "/about",
+    path: "/uslugi",
     bgColor: "bg-primary",
     hover: "hover:bg-primary/90",
   },

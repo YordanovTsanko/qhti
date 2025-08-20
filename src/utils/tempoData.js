@@ -131,6 +131,44 @@ export const temporaryProducts = [
     desc: "Продавам сонар симпад круиз 5 инча, много добър сонар, чисто нов купен през 2017 и вече е с изтекла гаранция иначе не е ползван",
   },
 ];
+export const temporaryServices = [
+  {
+    id: 1,
+    referenceNumber: "00067",
+    src: companyImg,
+    title: "РЕМОНТ НА ЛОДКИ",
+    location: "обл. Бургас, С. Атия",
+    date: "21.09.2024",
+    desc: "Продавам сонар симпад круиз 5 инча, много добър сонар, чисто нов купен през 2017 и вече е с изтекла гаранция иначе не е ползван",
+  },
+  {
+    id: 2,
+    referenceNumber: "00037",
+    src: companyImg,
+    title: "РЕМОНТ НА ЛОДКИ",
+    location: "обл. Бургас, С. Атия",
+    date: "21.09.2024",
+    desc: "Продавам сонар симпад круиз 5 инча, много добър сонар, чисто нов купен през 2017 и вече е с изтекла гаранция иначе не е ползван",
+  },
+  {
+    id: 3,
+    referenceNumber: "02067",
+    src: companyImg,
+    title: "РЕМОНТ НА ЛОДКИ",
+    location: "обл. Бургас, С. Атия",
+    date: "21.09.2024",
+    desc: "Продавам сонар симпад круиз 5 инча, много добър сонар, чисто нов купен през 2017 и вече е с изтекла гаранция иначе не е ползван",
+  },
+  {
+    id: 4,
+    referenceNumber: "04067",
+    src: companyImg,
+    title: "РЕМОНТ НА ЛОДКИ",
+    location: "обл. Бургас, С. Атия",
+    date: "21.09.2024",
+    desc: "Продавам сонар симпад круиз 5 инча, много добър сонар, чисто нов купен през 2017 и вече е с изтекла гаранция иначе не е ползван",
+  },
+];
 export const tempoDataForSearch = {
   lodki_i_qhti: {
     typeOptions: [
@@ -284,6 +322,26 @@ export const tempoDataForSearch = {
       { value: "Aftermarket", label: "Афтърмаркет" },
     ],
     maxPrice: 0,
+  },
+};
+
+export const tempoDataForSearchService = {
+  remont_na_dvigateli: {
+    brandOptions: [
+      { value: "Boat", label: "Лодка" },
+      { value: "Yacht", label: "Яхта" },
+    ],
+    serviceOptions: [
+      { value: "Bayliner", label: "Бейлайнер" },
+      { value: "Yamaha", label: "Ямаха" },
+      { value: "Sea Ray", label: "Сий Рей" },
+    ],
+  },
+  remont_na_lodki: {
+    materialOptions: [
+      { value: "Boat", label: "Лодка" },
+      { value: "Yacht", label: "Яхта" },
+    ]
   },
 };
 
