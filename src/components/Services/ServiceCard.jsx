@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { IoLocationSharp } from "react-icons/io5";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
+import { FaCircleCheck } from "react-icons/fa6";
 
 const ServiceCard = ({ service }) => {
 
   const [isFavorite, setIsFavorite] = useState(false);
 
   return (
-    <div className="bg-white w-full rounded-2xl flex flex-col sm:flex-row items-center gap-3 p-4">
+    <div className="bg-white w-full rounded-2xl flex flex-col sm:flex-row items-center gap-3 shadow-custom p-4 relative">
       <div className="w-44 h-44 flex flex-col items-center justify-center overflow-hidden flex-shrink-0">
         <img src={service?.src} alt="Error" className="w-44 auto" />
       </div>
@@ -26,6 +27,10 @@ const ServiceCard = ({ service }) => {
           <FaHeart className="h-8 w-8 text-secondary" />
         )}
       </div>
+      {service?.type && <div className="absolute bottom-4 left-4 md:left-auto md:right-4 flex items-center gap-2">
+       <FaCircleCheck className="h-6 w-6 text-green-500"/>
+       <h2 className="font-semibold text-md">ОТОРИЗИРАН СЕРВИЗ</h2>
+      </div>}
     </div>
   );
 };
